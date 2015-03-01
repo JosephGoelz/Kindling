@@ -7,7 +7,7 @@
   + Lecture Section: 30393
 
 **Developer 2**:
-  + Name: Jay Dee Goelz
+  + Name: Joseph D. Goelz
   + USC Email: jgoelz@usc.edu
   + Lecture Section: 30381
 
