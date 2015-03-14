@@ -18,7 +18,7 @@
 
 **Developer 4**:
   + Name: Winston Lee
-  + USC Email: winstonjl@usc.edu
+  + USC Email: winstojl@usc.edu
   + Lecture Section: 30381
 
 **Developer 5**:
