@@ -26,7 +26,7 @@
   + USC Email: joyceyan@usc.edu
   + Lecture Section: 30381
 
-###Git Best Practices
+###Git Shit
 
 Before you start working, checkout to a new branch. Remember to commit regularly!
 ```
