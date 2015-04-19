@@ -8,5 +8,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_main_messages">MainMessagesActivity</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
 
 </resources>
