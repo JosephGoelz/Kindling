@@ -16,5 +16,11 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_signup">SignupActivity</string>
     <string name="title_activity_game">GameActivity</string>
+    <string name="username">Username</string>
+    <string name="name">Name</string>
+    <string name="location">Location</string>
+    <string name="age">Age</string>
+    <string name="interested_in">Interested In</string>
+    <string name="gender">Gender</string>
 
 </resources>
