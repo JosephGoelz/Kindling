@@ -4,14 +4,71 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 
 public class MainMessagesActivity extends ActionBarActivity {
+
+    ImageButton backButton;
+    ImageButton chattingButton1, chattingButton2, chattingButton3, chattingButton4, chattingButton5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_messages);
+        setTitle("Messages");
+
+
+        backButton = (ImageButton) findViewById(R.id.backIcon);
+        chattingButton1 = (ImageButton) findViewById(R.id.user_chatting_Icon1);
+        chattingButton2 = (ImageButton) findViewById(R.id.user_chatting_Icon1);
+        chattingButton3 = (ImageButton) findViewById(R.id.user_chatting_Icon1);
+        chattingButton4 = (ImageButton) findViewById(R.id.user_chatting_Icon1);
+        chattingButton5 = (ImageButton) findViewById(R.id.user_chatting_Icon1);
+
+        //When the backbutton is clicked.
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add functions here when the first button clicked.
+            }
+        });
+
+
+
+        //When each chattingButton is clicked
+        chattingButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add functions here when the first button clicked.
+            }
+        });
+        chattingButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add functions here when the second button clicked.
+            }
+        });
+        chattingButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add functions here when the third button clicked.
+            }
+        });
+        chattingButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add functions here when the forth button clicked.
+            }
+        });
+        chattingButton5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add functions here when the fifth button clicked.
+            }
+        });
+
     }
 
 
