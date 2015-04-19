@@ -39,5 +39,16 @@ public class WelcomeActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+
+        // detect playWithoutGame button click
+        ImageButton playWithoutAccountButton;
+        playWithoutAccountButton = (ImageButton) findViewById(R.id.playWithoutAccountButton);
+        playWithoutAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), GameActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
