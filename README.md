@@ -13,7 +13,7 @@
 
 **Developer 3**:
   + Name: Taegyum Kim
-  + USC Email:
+  + USC Email: taegyumk@usc.edu
   + Lecture Section: 30381
 
 **Developer 4**:
