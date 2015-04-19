@@ -44,6 +44,12 @@ git checkout my-feature
 git merge master
 ```
 
+If you've already committed to master and didn't realize you had diverged until you tried pushing, then run a git pull and rebase your local changes onto master.
+```
+git pull --rebase
+git push
+```
+
 When you are ready to deploy your feature, commit all your changes and run a git status to double check that all your changes are in. Then, checkout to master (and git pull to make sure you're up to date) and merge changes from your branch onto master. After your changes are properly merged from your local branch to your local copy of master, push from your local copy of master to the remote master.
 ```
 git commit -m "here's my final change!"
