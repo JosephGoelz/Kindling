@@ -2,9 +2,9 @@ package kindling.com.helloworld;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
+import android.app.ActionBar;
+import android.view.View;
+import android.widget.ImageButton;
 
 public class SignupActivity extends ActionBarActivity {
 
@@ -12,6 +12,14 @@ public class SignupActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        setTitle(R.string.sign_up);
+        setTitle("");
+
+        ImageButton kindleButton = (ImageButton) findViewById(R.id.actualSignupButton);
+        kindleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // do stuff!
+            }
+        });
     }
 }
