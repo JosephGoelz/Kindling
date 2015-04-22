@@ -28,6 +28,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
+        android:layout_marginTop="45px"
         android:src="@drawable/signup_btn" />
 
     <ImageButton
@@ -35,6 +36,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
+        android:layout_marginTop="35px"
         android:src="@drawable/noaccount_btn" />
 
 </LinearLayout>
