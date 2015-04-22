@@ -1,5 +1,6 @@
 package kindling.com.helloworld;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.app.ActionBar;
@@ -7,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import helper.StringFunctions;
 
 public class SignupActivity extends ActionBarActivity {
 
@@ -43,9 +46,11 @@ public class SignupActivity extends ActionBarActivity {
     }
 
     private boolean invalidInput() {
-        if (usernameEditText.getText().toString().matches("") || passwordEditText.getText().toString().matches("") ||
-                locationEditText.getText().toString().matches("") || nameEditText.getText().toString().matches("") ||
-                ageEditText.getText().toString().matches("")) {
+        if (StringFunctions.isWhiteSpace(usernameEditText.getText().toString()) ||
+                passwordEditText.getText().toString().isEmpty() ||
+                StringFunctions.isWhiteSpace(locationEditText.getText().toString()) ||
+                StringFunctions.isWhiteSpace(nameEditText.getText().toString()) ||
+                StringFunctions.isWhiteSpace(ageEditText.getText().toString())) {
             return true;
         }
         Integer age = Integer.parseInt(ageEditText.getText().toString());
