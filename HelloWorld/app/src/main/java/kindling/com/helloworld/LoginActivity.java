@@ -39,8 +39,7 @@ public class LoginActivity extends ActionBarActivity {
                 }
                 // TODO Check with the server if the login information is legitimate
                 else {
-                    // TODO Switch to MatchingActivity instead
-                    Intent intent = new Intent(v.getContext(), MainActivity.class);
+                    Intent intent = new Intent(v.getContext(), MatchingActivity.class);
                     startActivity(intent);
                 }
             }

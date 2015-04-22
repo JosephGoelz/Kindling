@@ -39,6 +39,10 @@ public class SignupActivity extends ActionBarActivity {
                 if (invalidInput()) {
                     Toast.makeText(getApplicationContext(), R.string.invalid_input, Toast.LENGTH_SHORT).show();
                 }
+                else {
+                    Intent intent = new Intent(v.getContext(), MatchingActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
