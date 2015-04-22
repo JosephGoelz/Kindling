@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:scaleType="center"
+        android:src="@drawable/tan_msg_background"
+        android:id="@+id/imageTopView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/msg_btn"
+        android:layout_gravity="top|right"
+        android:layout_alignBottom="@+id/imageTopView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/imageButton" />
+
+
+    <ImageButton
+        android:id="@+id/settingButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/header_settings"
+        android:layout_gravity="top|left"
+        android:layout_alignBottom="@+id/imageTopView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <ImageView
+        android:id="@+id/machingOwl"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/kindling_owl_large"
+        android:layout_gravity="top|left"
+        android:layout_alignBottom="@+id/imageTopView"
+        android:layout_centerHorizontal="true" />
+
+
+    <ImageView
+        android:id="@+id/backDrop"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/candidate_backdrop"
+        android:layout_below="@+id/imageTopView"
+        android:layout_toRightOf="@+id/settingButton"
+        android:layout_toEndOf="@+id/settingButton" />
+
+    <ImageView
+        android:id="@+id/matching_button"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:src="@drawable/matchingbtns_backdrop"
+        android:layout_below="@+id/backDrop"
+        android:layout_alignRight="@+id/imageButton"
+        android:layout_alignEnd="@+id/imageButton" />
+
+    <ImageButton
+        android:id="@+id/leftButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/swipe_left_btn"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="-20dp"
+        android:layout_alignTop="@+id/matching_button"
+        android:layout_toLeftOf="@+id/machingOwl"
+        android:layout_toStartOf="@+id/machingOwl" />
+
+    <ImageButton
+        android:id="@+id/rightButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/swipe_right_btn"
+        android:layout_gravity="center"
+        android:layout_marginLeft="-15dp"
+        android:layout_alignTop="@+id/leftButton"
+        android:layout_toRightOf="@+id/machingOwl"
+        android:layout_toEndOf="@+id/machingOwl" />
+
+    <ImageButton
+        android:id="@+id/informationButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/information_btn"
+        android:layout_marginBottom="11dp"
+        android:layout_alignBottom="@+id/matching_button"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
