@@ -21,7 +21,7 @@
         android:scaleType = "centerInside"
         android:src="@drawable/msg_btn"
         android:background = "@null"
-        android:id="@+id/imageButton"
+        android:id="@+id/messageButton"
         android:layout_marginRight = "8dp"
         android:layout_alignTop="@+id/machingOwl"
         android:layout_alignParentRight="true"
