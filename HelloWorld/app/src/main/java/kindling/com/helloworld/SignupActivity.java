@@ -32,6 +32,7 @@ public class SignupActivity extends ActionBarActivity {
 
         intoMaleSelected = false;
         intoWomenSelected = false;
+        bisexualSelected = false;
 
         usernameEditText = (EditText) findViewById(R.id.username_edit_text);
         passwordEditText = (EditText) findViewById(R.id.password_edit_text);
@@ -86,19 +87,19 @@ public class SignupActivity extends ActionBarActivity {
         });
 
         //Modify this section to work for bisexual individuals
-        /*bisexualButton.setOnClickListener(new View.OnClickListener(){
+        bisexualButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v)
             {
-                if(!intoMaleSelected) {
-                    intoMenButton.setImageResource(R.drawable.male_btn_selected);
-                    intoMaleSelected = true;
+                if(!bisexualSelected) {
+                    bisexualButton.setImageResource(R.drawable.bisexual_btn_selected);
+                    bisexualSelected = true;
                 }else{
-                    intoMenButton.setImageResource(R.drawable.male_btn);
-                    intoMaleSelected = false;
+                    bisexualButton.setImageResource(R.drawable.bisexual_btn);
+                    bisexualSelected = false;
                 }
             }
-        });*/
+        });
 
     }
 
