@@ -2,8 +2,12 @@ package kindling.com.helloworld;
 
 import android.content.Context;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+=======
+import android.graphics.Typeface;
+>>>>>>> winstonbranch
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.app.ActionBar;
@@ -11,6 +15,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import android.widget.TextView;
 
 import helper.StringFunctions;
 
@@ -44,6 +49,32 @@ public class SignupActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         setTitle("");
+
+        //Font path
+        String fontPath = "fonts/Souses.otf";
+
+        //Text view label
+        TextView txtInterestedIn = (TextView) findViewById(R.id.interested_in_text_view);
+        TextView txtSex = (TextView) findViewById(R.id.gender_text_view);
+
+        EditText txtUsername = (EditText) findViewById(R.id.username_edit_text);
+        EditText txtPassword = (EditText) findViewById(R.id.password_edit_text);
+        EditText txtName = (EditText) findViewById(R.id.name_edit_text);
+        EditText txtLocation = (EditText) findViewById(R.id.location_edit_text);
+        EditText txtAge = (EditText) findViewById(R.id.age_edit_text);
+
+        //Loading Font Face
+        Typeface tf = Typeface.createFromAsset(getAssets(),fontPath);
+
+        //Applying font
+        txtUsername.setTypeface(tf);
+        txtPassword.setTypeface(tf);
+        txtName.setTypeface(tf);
+        txtLocation.setTypeface(tf);
+        txtAge.setTypeface(tf);
+
+        txtInterestedIn.setTypeface(tf);
+        txtSex.setTypeface(tf);
 
         intoMaleSelected = false;
         intoWomenSelected = false;
