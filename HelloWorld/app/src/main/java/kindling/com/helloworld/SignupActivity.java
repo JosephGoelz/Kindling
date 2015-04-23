@@ -2,12 +2,9 @@ package kindling.com.helloworld;
 
 import android.content.Context;
 import android.content.Intent;
-<<<<<<< HEAD
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-=======
 import android.graphics.Typeface;
->>>>>>> winstonbranch
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.app.ActionBar;
