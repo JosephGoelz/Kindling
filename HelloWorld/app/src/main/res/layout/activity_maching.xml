@@ -18,24 +18,26 @@
         />
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:scaleType="centerCrop"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType = "centerInside"
         android:src="@drawable/msg_btn"
-        android:layout_gravity="top|right"
-        android:layout_alignBottom="@+id/imageTopView"
+        android:background = "@null"
+        android:id="@+id/imageButton"
+        android:layout_marginRight = "8dp"
+        android:layout_alignTop="@+id/machingOwl"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/imageButton" />
+        android:layout_alignParentEnd="true" />
 
 
     <ImageButton
         android:id="@+id/settingButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
         android:src="@drawable/header_settings"
         android:layout_gravity="top|left"
+        android:background = "@null"
         android:layout_alignBottom="@+id/imageTopView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -72,36 +74,36 @@
 
     <ImageButton
         android:id="@+id/leftButton"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:scaleType="centerCrop"
         android:src="@drawable/swipe_left_btn"
         android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="-20dp"
-        android:layout_alignTop="@+id/matching_button"
+        android:background="@null"
+        android:layout_alignTop="@+id/rightButton"
         android:layout_toLeftOf="@+id/machingOwl"
         android:layout_toStartOf="@+id/machingOwl" />
 
     <ImageButton
         android:id="@+id/rightButton"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:scaleType="centerCrop"
         android:src="@drawable/swipe_right_btn"
         android:layout_gravity="center"
-        android:layout_marginLeft="-15dp"
-        android:layout_alignTop="@+id/leftButton"
+        android:background="@null"
+        android:layout_above="@+id/informationButton"
         android:layout_toRightOf="@+id/machingOwl"
         android:layout_toEndOf="@+id/machingOwl" />
 
     <ImageButton
         android:id="@+id/informationButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="20dp"
+        android:layout_height="30dp"
         android:scaleType="centerCrop"
         android:src="@drawable/information_btn"
         android:layout_marginBottom="11dp"
+        android:background="@null"
         android:layout_alignBottom="@+id/matching_button"
         android:layout_centerHorizontal="true" />
 
