@@ -1,6 +1,9 @@
 package kindling.com.helloworld;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.app.ActionBar;
@@ -12,6 +15,14 @@ import android.widget.Toast;
 import helper.StringFunctions;
 
 public class SignupActivity extends ActionBarActivity {
+
+    public static final String MY_PREFERENCES = "my preferences";
+    public static final String NAME = "name";
+    public static final String USERNAME = "username";
+    public static final String PASSWORD = "password";
+    public static final String GENDER = "gender";
+    public static final String GENDER_PREFERENCES = "gender preferences";
+    public static final String AGE = "age";
 
     ImageButton kindleButton;
     ImageButton intoMenButton, intoWomenButton, bisexualButton;
@@ -54,6 +65,22 @@ public class SignupActivity extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(), R.string.invalid_input, Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    Integer gender = 0; // 0 = male, 1 = female
+                    if (female) gender = 1;
+
+                    Integer genderPreference = 0; // 0 = into males, 1 = into females, 2 = into both
+                    if (intoWomenSelected) genderPreference = 1;
+                    if (intoMaleSelected && genderPreference == 1) genderPreference = 2;
+
+                    SharedPreferences sharedPreferences = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
+                    Editor editor = sharedPreferences.edit();
+                    editor.putString(NAME, nameEditText.getText().toString());
+                    editor.putString(USERNAME, usernameEditText.getText().toString());
+                    editor.putString(PASSWORD, passwordEditText.getText().toString());
+                    editor.putInt(GENDER, gender);
+                    editor.putInt(GENDER_PREFERENCES, genderPreference);
+                    editor.putInt(AGE, Integer.parseInt(ageEditText.getText().toString()));
+
                     Intent intent = new Intent(v.getContext(), MatchingActivity.class);
                     startActivity(intent);
                 }

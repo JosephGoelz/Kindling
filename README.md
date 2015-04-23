@@ -59,7 +59,7 @@ git merge my-feature
 git push
 ```
 
-If you run into a merge conflict, run a "git status" to see which files have a conflict. Then, open these files directly, and manually merge the changes you want to see. When you are done, save the file, git add it, and then I forgot what you do after this, so cry or something.
+If you run into a merge conflict, run a "git status" to see which files have a conflict. Then, open these files directly, and manually merge the changes you want to see. When you are done, save the file, git add it, commit your changes, and then push.
 ```
 git status
 
@@ -67,5 +67,6 @@ These files have a conflict:
 asdf.txt
 
 git add asdf.txt
-????
+git commit
+git push
 ```
