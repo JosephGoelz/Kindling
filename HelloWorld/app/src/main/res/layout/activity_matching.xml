@@ -19,6 +19,7 @@
         android:src="@drawable/tan_msg_background" />
 
     <ImageButton
+<<<<<<< HEAD:HelloWorld/app/src/main/res/layout/activity_matching.xml
         android:id="@+id/imageButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -28,12 +29,31 @@
         android:layout_gravity="top|right"
         android:scaleType="centerCrop"
         android:src="@drawable/msg_btn" />
+=======
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType = "centerInside"
+        android:src="@drawable/msg_btn"
+        android:background = "@null"
+        android:id="@+id/imageButton"
+        android:layout_marginRight = "8dp"
+        android:layout_alignTop="@+id/machingOwl"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+>>>>>>> taegyum-startBranch:HelloWorld/app/src/main/res/layout/activity_maching.xml
 
 
     <ImageButton
         android:id="@+id/settingButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
+<<<<<<< HEAD:HelloWorld/app/src/main/res/layout/activity_matching.xml
+=======
+        android:scaleType="centerInside"
+        android:src="@drawable/header_settings"
+        android:layout_gravity="top|left"
+        android:background = "@null"
+>>>>>>> taegyum-startBranch:HelloWorld/app/src/main/res/layout/activity_maching.xml
         android:layout_alignBottom="@+id/imageTopView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -72,12 +92,22 @@
 
     <ImageButton
         android:id="@+id/leftButton"
+<<<<<<< HEAD:HelloWorld/app/src/main/res/layout/activity_matching.xml
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignTop="@+id/matching_button"
         android:layout_gravity="center"
         android:layout_marginRight="-20dp"
         android:layout_marginTop="15dp"
+=======
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/swipe_left_btn"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:layout_alignTop="@+id/rightButton"
+>>>>>>> taegyum-startBranch:HelloWorld/app/src/main/res/layout/activity_maching.xml
         android:layout_toLeftOf="@+id/machingOwl"
         android:layout_toStartOf="@+id/machingOwl"
         android:scaleType="centerCrop"
@@ -85,20 +115,39 @@
 
     <ImageButton
         android:id="@+id/rightButton"
+<<<<<<< HEAD:HelloWorld/app/src/main/res/layout/activity_matching.xml
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignTop="@+id/leftButton"
         android:layout_gravity="center"
         android:layout_marginLeft="-15dp"
         android:layout_toEndOf="@+id/machingOwl"
+=======
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/swipe_right_btn"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:layout_above="@+id/informationButton"
+>>>>>>> taegyum-startBranch:HelloWorld/app/src/main/res/layout/activity_maching.xml
         android:layout_toRightOf="@+id/machingOwl"
         android:scaleType="centerCrop"
         android:src="@drawable/swipe_right_btn" />
 
     <ImageButton
         android:id="@+id/informationButton"
+<<<<<<< HEAD:HelloWorld/app/src/main/res/layout/activity_matching.xml
         android:layout_width="40dp"
         android:layout_height="40dp"
+=======
+        android:layout_width="20dp"
+        android:layout_height="30dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/information_btn"
+        android:layout_marginBottom="11dp"
+        android:background="@null"
+>>>>>>> taegyum-startBranch:HelloWorld/app/src/main/res/layout/activity_maching.xml
         android:layout_alignBottom="@+id/matching_button"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="11dp"
