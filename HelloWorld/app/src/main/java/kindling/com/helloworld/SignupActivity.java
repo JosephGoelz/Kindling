@@ -158,9 +158,19 @@ public class SignupActivity extends ActionBarActivity {
                 passwordEditText.getText().toString().isEmpty() ||
                 StringFunctions.isWhiteSpace(locationEditText.getText().toString()) ||
                 StringFunctions.isWhiteSpace(nameEditText.getText().toString()) ||
-                StringFunctions.isWhiteSpace(ageEditText.getText().toString())) {
+                StringFunctions.isWhiteSpace(ageEditText.getText().toString())
+                ) {
             return true;
         }
+        if(!male && !female){
+            // Debugging System.out.println("SEX ISSUE");
+            return true;
+        }
+        if(!intoWomenSelected && !intoMaleSelected && !bisexualSelected){
+            // Debugging System.out.println("SEXUALITY ISSUE");
+            return true;
+        }
+
         Integer age = Integer.parseInt(ageEditText.getText().toString());
         if (age < 18) return true;
         return false;
