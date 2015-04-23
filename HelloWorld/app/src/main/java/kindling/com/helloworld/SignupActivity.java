@@ -15,6 +15,7 @@ public class SignupActivity extends ActionBarActivity {
 
     ImageButton kindleButton;
     ImageButton intoMenButton, intoWomenButton, bisexualButton;
+    ImageButton maleBtn, femaleBtn;
     EditText usernameEditText;
     EditText passwordEditText;
     EditText nameEditText;
@@ -23,6 +24,9 @@ public class SignupActivity extends ActionBarActivity {
     Boolean intoMaleSelected; // Used to determine if the male checkbox is checked or not.
     Boolean intoWomenSelected; // Used to determine if the female checkbox is checked or not.
     Boolean bisexualSelected; // Used to determine if the m&w checkbox is checked or not.
+
+    Boolean male, female; // Used to determine the user's sex
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,8 @@ public class SignupActivity extends ActionBarActivity {
         intoMaleSelected = false;
         intoWomenSelected = false;
         bisexualSelected = false;
+        male = false;
+        female = false;
 
         usernameEditText = (EditText) findViewById(R.id.username_edit_text);
         passwordEditText = (EditText) findViewById(R.id.password_edit_text);
@@ -57,6 +63,38 @@ public class SignupActivity extends ActionBarActivity {
         intoMenButton = (ImageButton) findViewById(R.id.interested_in_male_button);
         intoWomenButton = (ImageButton) findViewById(R.id.interested_in_female_button);
         bisexualButton = (ImageButton) findViewById(R.id.interested_in_both_button);
+        maleBtn = (ImageButton) findViewById(R.id.sex_male_button);
+        femaleBtn = (ImageButton) findViewById(R.id.sex_female_button);
+
+        maleBtn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)
+            {
+                if(!male) {
+                    maleBtn.setImageResource(R.drawable.male_btn_selected);
+                    male = true;
+                    femaleBtn.setImageResource(R.drawable.women_btn);
+                    female = false;
+                }else{
+                    maleBtn.setImageResource(R.drawable.male_btn);
+                    male = false;
+                }
+            }
+        });
+
+        femaleBtn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)
+            {
+                if(!female) {
+                    femaleBtn.setImageResource(R.drawable.female_btn_selected);
+                    female = true;
+                    maleBtn.setImageResource(R.drawable.male_btn);
+                    male = false;
+                }else{
+                    femaleBtn.setImageResource(R.drawable.women_btn);
+                    female = false;
+                }
+            }
+        });
 
         intoMenButton.setOnClickListener(new View.OnClickListener(){
            @Override
@@ -65,6 +103,10 @@ public class SignupActivity extends ActionBarActivity {
                if(!intoMaleSelected) {
                    intoMenButton.setImageResource(R.drawable.male_btn_selected);
                    intoMaleSelected = true;
+                   intoWomenButton.setImageResource(R.drawable.women_btn);
+                   intoWomenSelected = false;
+                   bisexualButton.setImageResource(R.drawable.bisexual_btn);
+                   bisexualSelected = false;
                }else{
                    intoMenButton.setImageResource(R.drawable.male_btn);
                    intoMaleSelected = false;
@@ -79,6 +121,10 @@ public class SignupActivity extends ActionBarActivity {
                 if(!intoWomenSelected) {
                     intoWomenButton.setImageResource(R.drawable.female_btn_selected);
                     intoWomenSelected = true;
+                    bisexualButton.setImageResource(R.drawable.bisexual_btn);
+                    bisexualSelected = false;
+                    intoMenButton.setImageResource(R.drawable.male_btn);
+                    intoMaleSelected = false;
                 }else{
                     intoWomenButton.setImageResource(R.drawable.women_btn);
                     intoWomenSelected = false;
@@ -94,6 +140,10 @@ public class SignupActivity extends ActionBarActivity {
                 if(!bisexualSelected) {
                     bisexualButton.setImageResource(R.drawable.bisexual_btn_selected);
                     bisexualSelected = true;
+                    intoMenButton.setImageResource(R.drawable.male_btn);
+                    intoMaleSelected = false;
+                    intoWomenButton.setImageResource(R.drawable.women_btn);
+                    intoWomenSelected = false;
                 }else{
                     bisexualButton.setImageResource(R.drawable.bisexual_btn);
                     bisexualSelected = false;

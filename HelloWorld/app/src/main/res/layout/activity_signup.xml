@@ -131,14 +131,14 @@
             android:text="@string/gender" />
 
         <ImageButton
-            android:id="@+id/gender_male_button"
+            android:id="@+id/sex_male_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:src="@drawable/male_btn" />
 
         <ImageButton
-            android:id="@+id/gender_female_button"
+            android:id="@+id/sex_female_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
