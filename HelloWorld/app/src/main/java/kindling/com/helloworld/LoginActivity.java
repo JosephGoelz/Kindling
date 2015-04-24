@@ -1,11 +1,13 @@
 package kindling.com.helloworld;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import helper.StringFunctions;
@@ -23,9 +25,19 @@ public class LoginActivity extends ActionBarActivity {
         setContentView(R.layout.activity_login);
         setTitle(getString(R.string.login));
 
-        // Text Fields
+        //Font path
+        String fontPath = "fonts/Souses.otf";
+
         usernameEditText = (EditText) findViewById(R.id.username_edit_text);
         passwordEditText = (EditText) findViewById(R.id.password_edit_text);
+        //Loading Font Face
+
+        Typeface tf = Typeface.createFromAsset(getAssets(),fontPath);
+
+
+        usernameEditText.setTypeface(tf);
+        passwordEditText.setTypeface(tf);
+
 
         // Login Button should send us to Matching.
         ImageButton loginButton = (ImageButton) findViewById(R.id.actualLoginButton);
