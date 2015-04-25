@@ -7,9 +7,14 @@ public class Application {
     private static User _User;
     private static boolean loggedIn;
 
-    public Application(User _User){
+    public static void initApplication(User user) {
         //when we log in we give the application our user
         //and set loggedIn to true
+        _User = user;
+        loggedIn = true;
+    }
+
+    public Application(User _User) {
         this._User = _User;
         loggedIn = true;
     }

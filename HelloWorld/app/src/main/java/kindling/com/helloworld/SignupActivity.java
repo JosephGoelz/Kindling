@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import helper.StringFunctions;
 import model.kindling.Application;
+import model.kindling.User;
 
 public class SignupActivity extends ActionBarActivity {
 
@@ -88,12 +89,16 @@ public class SignupActivity extends ActionBarActivity {
                     if (intoWomenSelected) genderPreference = 1;
                     if (intoMaleSelected && genderPreference == 1) genderPreference = 2;
 
-//                    Application.getUser().setName(nameEditText.getText().toString());
-//                    Application.getUser().setAge(Integer.parseInt(ageEditText.getText().toString()));
-//                    Application.getUser().setUserName(usernameEditText.getText().toString());
-//                    Application.getUser().setSex(gender);
-//                    Application.getUser().setSexualOrientation(genderPreference);
-//                    Application.getUser().setPassword(passwordEditText.getText().toString());
+                    User newUser = new User();
+
+                    newUser.setName(nameEditText.getText().toString());
+                    newUser.setAge(Integer.parseInt(ageEditText.getText().toString()));
+                    newUser.setUserName(usernameEditText.getText().toString());
+                    newUser.setSex(gender);
+                    newUser.setSexualOrientation(genderPreference);
+                    newUser.setPassword(passwordEditText.getText().toString());
+
+                    Application.initApplication(newUser);
 
                     Intent intent = new Intent(v.getContext(), MatchingActivity.class);
                     startActivity(intent);
