@@ -5,10 +5,10 @@ package model.kindling;
  */
 public class User {
     //the user class as described in the DDD
-    private String name, userName;
-    private int age, intel_level;
-    private int sexual_orientation;
-    private int sex;
+    private String name, userName, password;
+    private int age, intelLevel;
+    private int sexualOrientation; // 0 = into males, 1 = into females, 2 = into both
+    private int sex; // 0 = male, 1 = female
     private Range intelRange;
     private Range ageRange;
     //add an image format tbd
@@ -17,17 +17,17 @@ public class User {
         //possibly set to some default values
     }
 
-    private void setName (String _name){
+    public void setName (String _name){
         this.name = _name;
     }
-    private String getName (){
+    public String getName (){
         return name;
     }
 
-    private void setUserName (String _userName){
+    public void setUserName (String _userName){
         this.userName = _userName;
     }
-    private String getUserName (){
+    public String getUserName (){
         return userName;
     }
 
@@ -37,22 +37,6 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public int getIntel_level() {
-        return intel_level;
-    }
-
-    public void setIntel_level(int intel_level) {
-        this.intel_level = intel_level;
-    }
-
-    public int getSexual_orientation() {
-        return sexual_orientation;
-    }
-
-    public void setSexual_orientation(int sexual_orientation) {
-        this.sexual_orientation = sexual_orientation;
     }
 
     public int getSex() {
@@ -78,6 +62,29 @@ public class User {
     public void setAgeRange(Range ageRange) {
         this.ageRange = ageRange;
     }
-    //getter and setter functions
+
+    public int getIntelLevel() {
+        return intelLevel;
+    }
+
+    public void setIntelLevel(int intelLevel) {
+        this.intelLevel = intelLevel;
+    }
+
+    public int getSexualOrientation() {
+        return sexualOrientation;
+    }
+
+    public void setSexualOrientation(int sexualOrientation) {
+        this.sexualOrientation = sexualOrientation;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String p) {
+        password = p;
+    }
 
 }

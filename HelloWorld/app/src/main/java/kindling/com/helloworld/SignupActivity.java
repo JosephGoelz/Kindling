@@ -1,11 +1,9 @@
 package kindling.com.helloworld;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.app.ActionBar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -13,16 +11,9 @@ import android.widget.Toast;
 import android.widget.TextView;
 
 import helper.StringFunctions;
+import model.kindling.Application;
 
 public class SignupActivity extends ActionBarActivity {
-
-    public static final String MY_PREFERENCES = "my preferences";
-    public static final String NAME = "name";
-    public static final String USERNAME = "username";
-    public static final String PASSWORD = "password";
-    public static final String GENDER = "gender";
-    public static final String GENDER_PREFERENCES = "gender preferences";
-    public static final String AGE = "age";
 
     ImageButton kindleButton;
     ImageButton intoMenButton, intoWomenButton, bisexualButton;
@@ -35,7 +26,6 @@ public class SignupActivity extends ActionBarActivity {
     Boolean intoMaleSelected; // Used to determine if the male checkbox is checked or not.
     Boolean intoWomenSelected; // Used to determine if the female checkbox is checked or not.
     Boolean bisexualSelected; // Used to determine if the m&w checkbox is checked or not.
-
     Boolean male, female; // Used to determine the user's sex
 
 
@@ -97,6 +87,13 @@ public class SignupActivity extends ActionBarActivity {
                     Integer genderPreference = 0; // 0 = into males, 1 = into females, 2 = into both
                     if (intoWomenSelected) genderPreference = 1;
                     if (intoMaleSelected && genderPreference == 1) genderPreference = 2;
+
+                    Application.getUser().setName(nameEditText.getText().toString());
+                    Application.getUser().setAge(Integer.parseInt(ageEditText.getText().toString()));
+                    Application.getUser().setUserName(usernameEditText.getText().toString());
+                    Application.getUser().setSex(gender);
+                    Application.getUser().setSexualOrientation(genderPreference);
+                    Application.getUser().setPassword(passwordEditText.getText().toString());
 
                     Intent intent = new Intent(v.getContext(), MatchingActivity.class);
                     startActivity(intent);
