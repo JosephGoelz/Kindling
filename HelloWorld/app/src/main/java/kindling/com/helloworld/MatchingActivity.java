@@ -50,9 +50,6 @@ public class MatchingActivity extends ActionBarActivity {
 
     }
 
-
-
-
     private void popUp() {
 
             ImageView image = new ImageView(this);
