@@ -10,7 +10,6 @@ import android.widget.ImageButton;
 
 public class MainMessagesActivity extends ActionBarActivity {
 
-    ImageButton backButton;
     ImageButton chattingButton1, chattingButton2, chattingButton3, chattingButton4;
     ImageButton chattingButton5, chattingButton6;
 
@@ -20,8 +19,6 @@ public class MainMessagesActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main_messages);
         setTitle("Messages");
 
-
-        backButton = (ImageButton) findViewById(R.id.backIcon);
         chattingButton1 = (ImageButton) findViewById(R.id.user_chatting_Icon1);
         chattingButton2 = (ImageButton) findViewById(R.id.user_chatting_Icon2);
         chattingButton3 = (ImageButton) findViewById(R.id.user_chatting_Icon3);
@@ -29,13 +26,6 @@ public class MainMessagesActivity extends ActionBarActivity {
         chattingButton5 = (ImageButton) findViewById(R.id.user_chatting_Icon5);
         chattingButton6 = (ImageButton) findViewById(R.id.user_chatting_Icon6);
 
-        //When the backbutton is clicked.
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //add functions here when the first button clicked.
-            }
-        });
         //When each chattingButton is clicked
         chattingButton1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +63,6 @@ public class MainMessagesActivity extends ActionBarActivity {
                 //add functions here when the fifth button clicked.
             }
         });
-
     }
 
 
