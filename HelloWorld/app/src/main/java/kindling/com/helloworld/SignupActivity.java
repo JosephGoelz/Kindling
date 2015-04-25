@@ -2,8 +2,6 @@ package kindling.com.helloworld;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -99,15 +97,6 @@ public class SignupActivity extends ActionBarActivity {
                     Integer genderPreference = 0; // 0 = into males, 1 = into females, 2 = into both
                     if (intoWomenSelected) genderPreference = 1;
                     if (intoMaleSelected && genderPreference == 1) genderPreference = 2;
-
-                    SharedPreferences sharedPreferences = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-                    Editor editor = sharedPreferences.edit();
-                    editor.putString(NAME, nameEditText.getText().toString());
-                    editor.putString(USERNAME, usernameEditText.getText().toString());
-                    editor.putString(PASSWORD, passwordEditText.getText().toString());
-                    editor.putInt(GENDER, gender);
-                    editor.putInt(GENDER_PREFERENCES, genderPreference);
-                    editor.putInt(AGE, Integer.parseInt(ageEditText.getText().toString()));
 
                     Intent intent = new Intent(v.getContext(), MatchingActivity.class);
                     startActivity(intent);
