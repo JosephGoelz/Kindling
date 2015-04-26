@@ -21,6 +21,7 @@ import android.graphics.drawable.ColorDrawable;
 
 public class MatchingActivity extends ActionBarActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

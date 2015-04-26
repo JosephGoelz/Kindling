@@ -1,16 +1,14 @@
 package kindling.com.helloworld;
 
-import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.ImageButton;
 
-public class MathGameActivity extends ActionBarActivity {
+
+
+public class WordGameActivity extends ActionBarActivity {
 
     Button answer_one, answer_two, answer_three, answer_four;
     TextView question_text;
@@ -28,12 +26,12 @@ public class MathGameActivity extends ActionBarActivity {
         setContentView(R.layout.activity_mathgame);
         setTitle("Math Game");
 
-        question_text = (TextView) findViewById(R.id.mathGame_questionText);
+        question_text = (TextView) findViewById(R.id.wordGame_questionText);
 
-        answer_one = (Button) findViewById(R.id.mathGame_AnswerButton1);
-        answer_two = (Button) findViewById(R.id.mathGame_AnswerButton1);
-        answer_three = (Button) findViewById(R.id.mathGame_AnswerButton1);
-        answer_four = (Button) findViewById(R.id.mathGame_AnswerButton1);
+        answer_one = (Button) findViewById(R.id.wordGame_AnswerButton1);
+        answer_two = (Button) findViewById(R.id.wordGame_AnswerButton1);
+        answer_three = (Button) findViewById(R.id.wordGame_AnswerButton1);
+        answer_four = (Button) findViewById(R.id.wordGame_AnswerButton1);
 
         // update question and choice
         question_text.setText(question);
