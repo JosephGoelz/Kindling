@@ -7,13 +7,11 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class DatabaseThread extends Thread {
-	private DatabaseServer server;
 	private Socket s;
 	private BufferedReader serverIn;
 	private PrintWriter serverOut;
 	
-	public DatabaseThread(Socket s, DatabaseServer server) {
-		this.server = server;
+	public DatabaseThread(Socket s) {
 		this.s = s;
 		try {
 			serverIn = new BufferedReader(new InputStreamReader(s.getInputStream()));
@@ -35,10 +33,10 @@ public class DatabaseThread extends Thread {
 				String line = serverIn.readLine();
 				// If we disconnect unexpectedly, don't send the line
 				if(line == null) throw new IOException("Null line");
-				System.out.println(line);
+				sendMessage("Line received");
 			}
 		} catch (IOException ioe) {
-			server.removeThread(this);
+			//server.removeThread(this);
 			System.out.println(s.getInetAddress() + ":" + s.getPort() + " disconnected.");
 		}
 		// Close readers, writers, socket

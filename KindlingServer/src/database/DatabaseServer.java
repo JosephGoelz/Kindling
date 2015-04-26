@@ -3,37 +3,26 @@ package database;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Vector;
 
 public class DatabaseServer {
+	// Port to connect with the server over
 	public static final int PORT_NUMBER = 8888;
 	
+	// ServerSocket everything else connects to
 	private ServerSocket dbSocket;
-	private Vector<DatabaseThread> threadList = new Vector<DatabaseThread>();
 	
+	// Constructor. Opens server socket then waits and accepts connections
 	public DatabaseServer() {
-		Socket s = null;
 		try {
 			dbSocket = new ServerSocket(PORT_NUMBER);
-			while (true) {
-				System.out.println("Waiting for client to connect...");
-				s = dbSocket.accept();
-				System.out.println("Client " + s.getInetAddress() + ":" + s.getPort() + " connected");
-				DatabaseThread thread = new DatabaseThread(s, this);
-				threadList.add(thread);
-				thread.start();
-			}
-		} catch (IOException ioe) {
-			System.out.println("IO Exception with DBServer");
+			acceptConnections();
+		}
+		catch (IOException ioe) {
+			System.out.println("IO Exception opening ServerSocket");
 			System.out.println(ioe.getMessage());
-		} finally {
-			if (s != null) {
-				try {
-					s.close();
-				} catch (IOException ioe) {
-					System.out.println("IOE closing Socket: " + ioe.getMessage());
-				}
-			}
+		}
+		// When we close down the server, close the ServerSocket
+		finally {
 			if (dbSocket != null) {
 				try {
 					dbSocket.close();
@@ -44,8 +33,21 @@ public class DatabaseServer {
 		}
 	}
 	
-	public boolean removeThread(DatabaseThread thread) {
-		return threadList.remove(thread);
+	// Has the server sit and wait for connections to accept.
+	// Upon accepting a connection, start a database thread
+	private void acceptConnections() {
+		Socket s = null;
+		try {
+			while (true) {
+				s = dbSocket.accept();
+				System.out.println("Client " + s.getInetAddress() + ":" + s.getPort() + " connected");
+				DatabaseThread thread = new DatabaseThread(s);
+				thread.start();
+			}
+		} catch (IOException ioe) {
+			System.out.println("IO Exception with DBServer");
+			System.out.println(ioe.getMessage());
+		}
 	}
 
 	public static void main(String[] args) {
