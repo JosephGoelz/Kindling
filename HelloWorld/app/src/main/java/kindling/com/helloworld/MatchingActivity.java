@@ -111,6 +111,7 @@ public class MatchingActivity extends ActionBarActivity {
                 }
             }
         };
+        animation.start();
     }
 
     private void setupCards() {
@@ -118,29 +119,112 @@ public class MatchingActivity extends ActionBarActivity {
         Resources r = getResources();
 
         SimpleCardStackAdapter adapter = new SimpleCardStackAdapter(this);
-        adapter.add(new CardModel("Aaron Cote", "I play Hearthstone", r.getDrawable((R.drawable.aaron_cote))));
-        adapter.add(new CardModel("Mark Redekopp", "My kids are adorable", r.getDrawable(R.drawable.mark_redekopp)));
-        adapter.add(new CardModel("Dave Pritchard", "Eh???", r.getDrawable(R.drawable.dave_pritchard)));
-        CardModel cardModel = new CardModel("David Kempe", "I teach CS at USC", r.getDrawable(R.drawable.david_kempe));
-        cardModel.setOnClickListener(new CardModel.OnClickListener() {
+        //adapter.add(new CardModel("Aaron Cote", "I play Hearthstone", r.getDrawable((R.drawable.aaron_cote))));
+        //adapter.add(new CardModel("Mark Redekopp", "My kids are adorable", r.getDrawable(R.drawable.mark_redekopp)));
+        //adapter.add(new CardModel("Dave Pritchard", "Eh???", r.getDrawable(R.drawable.dave_pritchard)));
+
+
+
+        CardModel cardModel1 = new CardModel("David Kempe", "I teach CS at USC", r.getDrawable(R.drawable.david_kempe));
+        cardModel1.setOnClickListener(new CardModel.OnClickListener() {
             @Override
             public void OnClickListener() {
                 System.out.println("I am pressing the card");
             }
         });
+        cardModel1.setOnCardDimissedListener(new CardModel.OnCardDimissedListener() {
+            @Override
+            public void onLike() {
+                //actually it means unmatching
+                System.out.println("I like the card");
 
-        cardModel.setOnCardDimissedListener(new CardModel.OnCardDimissedListener() {
+            }
+
+            @Override
+            public void onDislike() {
+                //actually it means matching
+                System.out.println("I dislike the card");
+                popUp();
+                animation();
+            }
+        });
+        //changes
+        CardModel cardModel2 = new CardModel("Dave Pritchard", "Eh???", r.getDrawable(R.drawable.dave_pritchard));
+        cardModel2.setOnClickListener(new CardModel.OnClickListener() {
+            @Override
+            public void OnClickListener() {
+                System.out.println("I am pressing the card");
+            }
+        });
+        cardModel2.setOnCardDimissedListener(new CardModel.OnCardDimissedListener() {
             @Override
             public void onLike() {
                 System.out.println("I like the card");
+
             }
 
             @Override
             public void onDislike() {
                 System.out.println("I dislike the card");
+                popUp();
+                animation();
             }
         });
-        adapter.add(cardModel);
+        CardModel cardModel3 = new CardModel("Mark Redekopp", "My kids are adorable", r.getDrawable(R.drawable.mark_redekopp));
+        cardModel3.setOnClickListener(new CardModel.OnClickListener() {
+            @Override
+            public void OnClickListener() {
+                System.out.println("I am pressing the card");
+            }
+        });
+        cardModel3.setOnCardDimissedListener(new CardModel.OnCardDimissedListener() {
+            @Override
+            public void onLike() {
+                System.out.println("I like the card");
+
+            }
+
+            @Override
+            public void onDislike() {
+                System.out.println("I dislike the card");
+                popUp();
+                animation();
+            }
+        });
+        CardModel cardModel4 = new CardModel("Aaron Cote", "I play Hearthstone", r.getDrawable((R.drawable.aaron_cote)));
+        cardModel4.setOnClickListener(new CardModel.OnClickListener() {
+            @Override
+            public void OnClickListener() {
+                System.out.println("I am pressing the card");
+            }
+        });
+        cardModel4.setOnCardDimissedListener(new CardModel.OnCardDimissedListener() {
+            @Override
+            public void onLike() {
+                System.out.println("I like the card");
+
+            }
+
+            @Override
+            public void onDislike() {
+                System.out.println("I dislike the card");
+                popUp();
+                animation();
+            }
+        });
+
+
+
+
+        adapter.add(cardModel1);
+        adapter.add(cardModel2);
+        adapter.add(cardModel3);
+        adapter.add(cardModel4);
+
+
+
+
+
 
         cardContainer.setAdapter(adapter);
     }
@@ -156,7 +240,7 @@ public class MatchingActivity extends ActionBarActivity {
             AlertDialog helpDialog = picturePopUp.create();
             helpDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             helpDialog.show();
-            animation.start();
+            //animation.start();
     }
 
 }
