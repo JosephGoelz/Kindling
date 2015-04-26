@@ -3,7 +3,8 @@
     android:layout_height="match_parent"
     tools:context="kindling.com.helloworld.SettingsActivity"
     android:theme="@android:style/Theme.Light.WallpaperSettings"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/linearLayout">
 
     <ImageView
         android:id="@+id/imageTopView"
@@ -30,7 +31,8 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/ageRelativeLayout">
 
         <ImageView
             android:id="@+id/ageBackgroundBox"
@@ -38,12 +40,6 @@
             android:layout_height="wrap_content"
             android:scaleType="center"
             android:src="@drawable/settings_section_box" />
-
-        <SeekBar
-            android:paddingTop="28dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/seekBar" />
 
     </RelativeLayout>
 
@@ -57,7 +53,8 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/intelligenceRelativeLayout">
 
         <ImageView
             android:id="@+id/intelligenceBackgroundBox"
@@ -65,13 +62,6 @@
             android:layout_height="wrap_content"
             android:scaleType="center"
             android:src="@drawable/settings_section_box" />
-
-        <SeekBar
-            android:paddingTop="28dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/seekBar2"
-            android:layout_gravity="center_horizontal" />
 
     </RelativeLayout>
 
