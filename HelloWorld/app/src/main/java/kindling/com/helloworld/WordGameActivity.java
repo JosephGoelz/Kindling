@@ -26,6 +26,9 @@ public class WordGameActivity extends ActionBarActivity {
         setContentView(R.layout.activity_mathgame);
         setTitle("Math Game");
 
+
+
+
         question_text = (TextView) findViewById(R.id.wordGame_questionText);
 
         answer_one = (Button) findViewById(R.id.wordGame_AnswerButton1);
@@ -64,6 +67,8 @@ public class WordGameActivity extends ActionBarActivity {
                 //add functions here for the  button clicked.
             }
         });
+
+
     }
 
 
