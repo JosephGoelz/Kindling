@@ -1,20 +1,20 @@
 package database;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
 public class DatabaseThread extends Thread {
 	private Socket s;
-	private BufferedReader serverIn;
+	private ObjectInputStream serverIn;
 	private PrintWriter serverOut;
 	
+	// Initializes thread to communicate with specified socket
 	public DatabaseThread(Socket s) {
 		this.s = s;
 		try {
-			serverIn = new BufferedReader(new InputStreamReader(s.getInputStream()));
+			serverIn = new ObjectInputStream(s.getInputStream());
 			serverOut = new PrintWriter(s.getOutputStream());
 		} catch (IOException ioe) {
 			System.out.println("IOE in DatabaseThread constructor: " + ioe.getMessage());
@@ -28,16 +28,21 @@ public class DatabaseThread extends Thread {
 
 	public void run() {
 		try {
-			// Constantly wait for a line to come in, then process it
+			// Stay waiting for requests
 			while (true) {
-				String line = serverIn.readLine();
+				DatabaseRequest request = (DatabaseRequest) serverIn.readObject();
+				
 				// If we disconnect unexpectedly, don't send the line
-				if(line == null) throw new IOException("Null line");
-				sendMessage("Line received");
+				if(request == null) throw new IOException("Null line");
+				
+				// Process request
+				// TODO add code to do different things based on request type
+				sendMessage("Line received: " + request.getUser().getUsername());
 			}
 		} catch (IOException ioe) {
-			//server.removeThread(this);
 			System.out.println(s.getInetAddress() + ":" + s.getPort() + " disconnected.");
+		} catch (ClassNotFoundException cnfe) {
+			System.out.println("CNFE in reading request: " + cnfe.getMessage());
 		}
 		// Close readers, writers, socket
 		finally {
