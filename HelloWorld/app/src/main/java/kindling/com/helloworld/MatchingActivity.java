@@ -2,6 +2,7 @@ package kindling.com.helloworld;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -36,7 +37,6 @@ public class MatchingActivity extends ActionBarActivity {
         setContentView(R.layout.activity_matching);
         setTitle("Matching");
 
-        img = (ImageView) findViewById(R.id.leftButton);
         ImageButton msgBtn;
         msgBtn = (ImageButton) findViewById(R.id.messageButton);
         msgBtn.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +47,17 @@ public class MatchingActivity extends ActionBarActivity {
 
             }
         });
+
+        ImageButton settingsBtn;
+        settingsBtn = (ImageButton) findViewById(R.id.settingButton);
+        settingsBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
         ImageButton acceptbtn;
         acceptbtn = (ImageButton) findViewById(R.id.rightButton);
         acceptbtn.setOnClickListener(new OnClickListener() {
