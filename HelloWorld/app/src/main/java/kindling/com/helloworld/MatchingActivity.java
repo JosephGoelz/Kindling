@@ -21,6 +21,9 @@ import com.andtinder.model.CardModel;
 import com.andtinder.view.CardContainer;
 import com.andtinder.view.SimpleCardStackAdapter;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MatchingActivity extends ActionBarActivity {
 
     boolean imageChanger = true;
@@ -72,11 +75,9 @@ public class MatchingActivity extends ActionBarActivity {
                 //put boolean variable
                 popUp();
                 animation();
-                //animation.start();
             }
 
         });
-        //Thread animation
 
         setupCards();
 
@@ -136,117 +137,39 @@ public class MatchingActivity extends ActionBarActivity {
         Resources r = getResources();
 
         SimpleCardStackAdapter adapter = new SimpleCardStackAdapter(this);
-        //adapter.add(new CardModel("Aaron Cote", "I play Hearthstone", r.getDrawable((R.drawable.aaron_cote))));
-        //adapter.add(new CardModel("Mark Redekopp", "My kids are adorable", r.getDrawable(R.drawable.mark_redekopp)));
-        //adapter.add(new CardModel("Dave Pritchard", "Eh???", r.getDrawable(R.drawable.dave_pritchard)));
 
+        ArrayList<String> names = new ArrayList<>(Arrays.asList("Aaron Cote", "Max Nikias", "David Kempe"));
+        ArrayList<Integer> resources = new ArrayList<>(Arrays.asList(R.drawable.aaron_cote, R.drawable.max_nikias, R.drawable.david_kempe));
 
+        for (int i=0; i<3; i++) {
+            CardModel cardModel = new CardModel(names.get(i), null, r.getDrawable(resources.get(i)));
+            cardModel.setOnClickListener(new CardModel.OnClickListener() {
+                @Override
+                public void OnClickListener() {
+                    System.out.println("I am pressing the card");
+                }
+            });
+            cardModel.setOnCardDimissedListener(new CardModel.OnCardDimissedListener() {
+                @Override
+                public void onLike() {
+                    System.out.println("I like the card");
+                }
 
-        CardModel cardModel1 = new CardModel("David Kempe", "I teach CS at USC", r.getDrawable(R.drawable.david_kempe));
-        cardModel1.setOnClickListener(new CardModel.OnClickListener() {
-            @Override
-            public void OnClickListener() {
-                System.out.println("I am pressing the card");
-            }
-        });
-        cardModel1.setOnCardDimissedListener(new CardModel.OnCardDimissedListener() {
-            @Override
-            public void onLike() {
-                //actually it means unmatching
-                System.out.println("I like the card");
-
-            }
-
-            @Override
-            public void onDislike() {
-                //actually it means matching
-                System.out.println("I dislike the card");
-                popUp();
-                animation();
-            }
-        });
-        //changes
-        CardModel cardModel2 = new CardModel("Dave Pritchard", "Eh???", r.getDrawable(R.drawable.dave_pritchard));
-        cardModel2.setOnClickListener(new CardModel.OnClickListener() {
-            @Override
-            public void OnClickListener() {
-                System.out.println("I am pressing the card");
-            }
-        });
-        cardModel2.setOnCardDimissedListener(new CardModel.OnCardDimissedListener() {
-            @Override
-            public void onLike() {
-                System.out.println("I like the card");
-
-            }
-
-            @Override
-            public void onDislike() {
-                System.out.println("I dislike the card");
-                popUp();
-                animation();
-            }
-        });
-        CardModel cardModel3 = new CardModel("Mark Redekopp", "My kids are adorable", r.getDrawable(R.drawable.mark_redekopp));
-        cardModel3.setOnClickListener(new CardModel.OnClickListener() {
-            @Override
-            public void OnClickListener() {
-                System.out.println("I am pressing the card");
-            }
-        });
-        cardModel3.setOnCardDimissedListener(new CardModel.OnCardDimissedListener() {
-            @Override
-            public void onLike() {
-                System.out.println("I like the card");
-
-            }
-
-            @Override
-            public void onDislike() {
-                System.out.println("I dislike the card");
-                popUp();
-                animation();
-            }
-        });
-        CardModel cardModel4 = new CardModel("Aaron Cote", "I play Hearthstone", r.getDrawable((R.drawable.aaron_cote)));
-        cardModel4.setOnClickListener(new CardModel.OnClickListener() {
-            @Override
-            public void OnClickListener() {
-                System.out.println("I am pressing the card");
-            }
-        });
-        cardModel4.setOnCardDimissedListener(new CardModel.OnCardDimissedListener() {
-            @Override
-            public void onLike() {
-
-            }
-
-            @Override
-            public void onDislike() {
-                System.out.println("I dislike the card");
-                popUp();
-                animation();
-            }
-        });
-
-
-
-
-        adapter.add(cardModel1);
-        adapter.add(cardModel2);
-        adapter.add(cardModel3);
-        adapter.add(cardModel4);
-
-
-
-
-
+                @Override
+                public void onDislike() {
+                    // for some reason this is what's called when you swipe right...
+                    System.out.println("I dislike the card");
+                    popUp();
+                    animation();
+                }
+            });
+            adapter.add(cardModel);
+        }
 
         cardContainer.setAdapter(adapter);
     }
 
     private void popUp() {
-
             image = new ImageView(this);
             image.setImageResource(R.drawable.its_a_match);
 
@@ -256,7 +179,6 @@ public class MatchingActivity extends ActionBarActivity {
             AlertDialog helpDialog = picturePopUp.create();
             helpDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             helpDialog.show();
-            //animation.start();
     }
 
 }
