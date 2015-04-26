@@ -51,13 +51,29 @@ public class MatchingActivity extends ActionBarActivity {
             public void onClick(View v) {
                 //put boolean variable
                 popUp();
-                animation.start();
+                animation();
+                //animation.start();
             }
 
         });
-
-        //Thread animation
         img= (ImageView) findViewById(R.id.leftButton);
+
+    }
+
+    private void popUp() {
+
+            image = new ImageView(this);
+            image.setImageResource(R.drawable.its_a_match);
+
+            AlertDialog.Builder picturePopUp = new AlertDialog.Builder(this);
+            picturePopUp.setView(image);
+
+            AlertDialog helpDialog = picturePopUp.create();
+            helpDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            helpDialog.show();
+    }
+
+    private void animation() {
 
         animation = new Thread() {
             public void run() {
@@ -94,28 +110,16 @@ public class MatchingActivity extends ActionBarActivity {
                     }
                     if(stopAnimation == 1)
                     {
+                        stopAnimation = 0;
+                        imageChanger = true;
+                        imageChanger1 = false;
                         break;
                     }
 
                 }
             }
         };
-
-
-
-    }
-
-    private void popUp() {
-
-            image = new ImageView(this);
-            image.setImageResource(R.drawable.its_a_match);
-
-            AlertDialog.Builder picturePopUp = new AlertDialog.Builder(this);
-            picturePopUp.setView(image);
-
-            AlertDialog helpDialog = picturePopUp.create();
-            helpDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-            helpDialog.show();
+        animation.start();
     }
 
 }
