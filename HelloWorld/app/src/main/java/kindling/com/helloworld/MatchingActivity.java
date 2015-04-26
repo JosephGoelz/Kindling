@@ -3,6 +3,7 @@ package kindling.com.helloworld;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,13 +15,16 @@ import android.content.DialogInterface;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.graphics.drawable.ColorDrawable;
-
-
+import android.widget.EditText;
 
 
 
 public class MatchingActivity extends ActionBarActivity {
 
+    boolean imageChanger = true;
+    ImageView img;
+    Thread animation;
+    ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +49,51 @@ public class MatchingActivity extends ActionBarActivity {
             public void onClick(View v) {
                 //put boolean variable
                 popUp();
+                animation.start();
             }
 
         });
+
+        //Thread animation
+        img= (ImageView) findViewById(R.id.leftButton);
+
+        animation = new Thread() {
+            public void run() {
+                while (true) {
+                    try {
+                        runOnUiThread(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                if(imageChanger)
+                                {
+                                    image.setImageResource(R.drawable.swipe_right_btn);
+                                    System.out.println("haha");
+                                    imageChanger=false;
+                                }
+                                else
+                                {
+                                    image.setImageResource(R.drawable.swipe_left_btn);
+                                    System.out.println("hoho");
+                                    imageChanger=true;
+                                }
+                            }
+                        });
+                        Thread.sleep(300);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+
+
 
     }
 
     private void popUp() {
 
-            ImageView image = new ImageView(this);
+            image = new ImageView(this);
             image.setImageResource(R.drawable.its_a_match);
 
             AlertDialog.Builder picturePopUp = new AlertDialog.Builder(this);
@@ -63,4 +103,5 @@ public class MatchingActivity extends ActionBarActivity {
             helpDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             helpDialog.show();
     }
+
 }
