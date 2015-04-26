@@ -1,6 +1,7 @@
 package kindling.com.helloworld;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +21,10 @@ public class WelcomeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         setTitle(getString(R.string.app_name));
+
+        //Hiding grey title bar at the top of the screen.
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         // detect login button click
         ImageButton loginButton = (ImageButton) findViewById(R.id.loginButton);

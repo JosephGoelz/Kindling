@@ -2,6 +2,7 @@ package kindling.com.helloworld;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +36,10 @@ public class SignupActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         setTitle("");
+
+        //Hiding grey title bar at the top of the screen.
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         //Font path
         String fontPath = "fonts/Souses.otf";

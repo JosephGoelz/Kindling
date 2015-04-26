@@ -1,5 +1,6 @@
 package kindling.com.helloworld;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,6 +19,11 @@ public class MainMessagesActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_messages);
         setTitle("Messages");
+
+
+        //Hiding grey title bar at the top of the screen.
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         chattingButton1 = (ImageButton) findViewById(R.id.user_chatting_Icon1);
         chattingButton2 = (ImageButton) findViewById(R.id.user_chatting_Icon2);

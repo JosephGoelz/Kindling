@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.Window;
+import android.support.v7.app.ActionBar;
 
 import helper.StringFunctions;
 
@@ -24,6 +26,10 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         setTitle(getString(R.string.login));
+
+        //Hiding grey title bar at the top of the screen.
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         //Font path
         String fontPath = "fonts/Souses.otf";
