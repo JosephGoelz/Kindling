@@ -22,6 +22,8 @@ import android.widget.EditText;
 public class MatchingActivity extends ActionBarActivity {
 
     boolean imageChanger = true;
+    boolean imageChanger1 = false;
+    int stopAnimation = 0;
     ImageView img;
     Thread animation;
     ImageView image;
@@ -65,24 +67,36 @@ public class MatchingActivity extends ActionBarActivity {
 
                             @Override
                             public void run() {
+
                                 if(imageChanger)
                                 {
-                                    image.setImageResource(R.drawable.swipe_right_btn);
-                                    System.out.println("haha");
+                                    image.setImageResource(R.drawable.its_a_match_nowink);
+                                    if(imageChanger1)
+                                    {
+                                        image.setImageResource(R.drawable.its_a_match);
+                                        stopAnimation++;
+                                    }
                                     imageChanger=false;
                                 }
-                                else
+                                else if((!imageChanger) && (stopAnimation == 0))
                                 {
-                                    image.setImageResource(R.drawable.swipe_left_btn);
-                                    System.out.println("hoho");
+                                    image.setImageResource(R.drawable.its_a_match_mid);
+
                                     imageChanger=true;
+                                    imageChanger1 = true;
+
                                 }
                             }
                         });
-                        Thread.sleep(300);
+                        Thread.sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+                    if(stopAnimation == 1)
+                    {
+                        break;
+                    }
+
                 }
             }
         };
