@@ -102,4 +102,12 @@
         android:scaleType="centerCrop"
         android:src="@drawable/information_btn" />
 
+    <com.andtinder.view.CardContainer
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/cardContainer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:layout_width="270dp"
+        android:layout_height="270dp" />
+
 </RelativeLayout>
