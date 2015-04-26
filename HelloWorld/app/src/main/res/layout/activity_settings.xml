@@ -1,12 +1,78 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="kindling.com.helloworld.SettingsActivity">
+    android:layout_height="match_parent"
+    tools:context="kindling.com.helloworld.SettingsActivity"
+    android:theme="@android:style/Theme.Light.WallpaperSettings"
+    android:orientation="vertical">
 
-    <TextView android:text="@string/action_settings" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/imageTopView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:src="@drawable/settings_header"/>
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/imageTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:src="@drawable/settings_title" />
+
+    <ImageView
+        android:id="@+id/ageRangeTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:src="@drawable/set_age_range_title" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ageBackgroundBox"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            android:src="@drawable/settings_section_box" />
+
+        <SeekBar
+            android:paddingTop="28dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/intelligenceRangeTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:src="@drawable/intelligence_settings_title" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/intelligenceBackgroundBox"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            android:src="@drawable/settings_section_box" />
+
+        <SeekBar
+            android:paddingTop="28dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar2"
+            android:layout_gravity="center_horizontal" />
+
+    </RelativeLayout>
+
+</LinearLayout>
