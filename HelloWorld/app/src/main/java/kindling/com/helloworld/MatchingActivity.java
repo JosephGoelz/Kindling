@@ -136,8 +136,7 @@ public class MatchingActivity extends ActionBarActivity {
 
         SimpleCardStackAdapter adapter = new SimpleCardStackAdapter(this);
         adapter.add(new CardModel("Aaron Cote", "I play Hearthstone", r.getDrawable((R.drawable.aaron_cote))));
-        adapter.add(new CardModel("Mark Redekopp", "My kids are adorable", r.getDrawable(R.drawable.mark_redekopp)));
-        adapter.add(new CardModel("Dave Pritchard", "Eh???", r.getDrawable(R.drawable.dave_pritchard)));
+        adapter.add(new CardModel("Max Nikias", null, r.getDrawable(R.drawable.max_nikias)));
         CardModel cardModel = new CardModel("David Kempe", "I teach CS at USC", r.getDrawable(R.drawable.david_kempe));
         cardModel.setOnClickListener(new CardModel.OnClickListener() {
             @Override
@@ -163,7 +162,6 @@ public class MatchingActivity extends ActionBarActivity {
     }
 
     private void popUp() {
-
             image = new ImageView(this);
             image.setImageResource(R.drawable.its_a_match);
 
