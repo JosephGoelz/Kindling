@@ -3,27 +3,28 @@ package database.sqlcommands;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import users.User;
+
 public class AuthenticateUser extends SQLCommand {
-	boolean good = false;
 	private static String query = "SELECT * FROM users WHERE username='";
-	private String passwordWanted;
-	private boolean isGood = false;
+
+	private User toReturn = null;
 	
-	public boolean checkUser(String username, String password) {
-		passwordWanted = password;
+	public User checkUser(String username, String password) {
 		super.runQuery(query + username + "'");
-		return isGood;
+		// Check for the correct password
+		if(toReturn == null) return toReturn;
+		if(!toReturn.getPassword().equals(password)) {
+			System.out.println(toReturn.getPassword());
+			return null;
+		}
+		return toReturn;
 	}
 	
 	@Override
 	protected void filterRS(ResultSet rs) {
 		try {
-		while(rs.next()) {
-			if(rs.getString("password").equals(passwordWanted)) {
-				isGood = true;
-				break;
-			}
-		}
+			if(rs.next()) toReturn = getUser(rs);
 		} catch(SQLException sqle) {
 			System.out.println("SQLE: " + sqle.getMessage());
 		}

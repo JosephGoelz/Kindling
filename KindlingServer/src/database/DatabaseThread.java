@@ -2,31 +2,35 @@ package database;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.PrintWriter;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import database.sqlcommands.AuthenticateUser;
 import users.User;
+import database.sqlcommands.AuthenticateUser;
 
 public class DatabaseThread extends Thread {
 	private Socket s;
 	private ObjectInputStream serverIn;
-	private PrintWriter serverOut;
+	private ObjectOutputStream serverOut;
 	
 	// Initializes thread to communicate with specified socket
 	public DatabaseThread(Socket s) {
 		this.s = s;
 		try {
 			serverIn = new ObjectInputStream(s.getInputStream());
-			serverOut = new PrintWriter(s.getOutputStream());
+			serverOut = new ObjectOutputStream(s.getOutputStream());
 		} catch (IOException ioe) {
 			System.out.println("IOE in DatabaseThread constructor: " + ioe.getMessage());
 		}
 	}
 
-	public void sendMessage(String str) {
-		serverOut.println(str);
-		serverOut.flush();
+	public void sendObject(Object obj) {
+		try {
+			serverOut.writeObject(obj);
+			serverOut.flush();
+		} catch (IOException ioe) {
+			System.out.println("IOE Sending Message: " + ioe.getMessage());
+		}
 	}
 
 	public void run() {
@@ -44,12 +48,15 @@ public class DatabaseThread extends Thread {
 				// TODO add code to do different things based on request type
 				if(rt == RequestType.AUTHENTICATE_USER) {
 					AuthenticateUser au = new AuthenticateUser();
-					if(au.checkUser(user.getUsername(), user.getPassword()))
-						sendMessage("Good.");
-					else sendMessage("Bad.");
+					// If the user sent over exists and has the correct password
+					User returned = au.checkUser(user.getUsername(), user.getPassword());
+					if(returned != null)
+						sendObject(new DatabaseRequest(returned, RequestType.VALID));
+					else
+						sendObject(new DatabaseRequest(null,RequestType.INVALID));
 				}
 				else {
-					sendMessage("Line received: " + request.getUser().getUsername());
+					sendObject("Line received: " + request.getUser().getUsername());
 				}
 			}
 		}
@@ -63,8 +70,8 @@ public class DatabaseThread extends Thread {
 		
 		// Close readers, writers, socket
 		finally {
-			serverOut.close();
 			try {
+				if(serverOut != null) serverOut.close();
 				if(serverIn != null) serverIn.close();
 				if (s != null) s.close();
 			} catch (IOException ioe) {
