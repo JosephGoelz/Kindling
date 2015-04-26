@@ -5,6 +5,9 @@ import java.io.ObjectInputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+import database.sqlcommands.AuthenticateUser;
+import users.User;
+
 public class DatabaseThread extends Thread {
 	private Socket s;
 	private ObjectInputStream serverIn;
@@ -36,14 +39,28 @@ public class DatabaseThread extends Thread {
 				if(request == null) throw new IOException("Null line");
 				
 				// Process request
+				RequestType rt = request.getRequestType();
+				User user = request.getUser();
 				// TODO add code to do different things based on request type
-				sendMessage("Line received: " + request.getUser().getUsername());
+				if(rt == RequestType.AUTHENTICATE_USER) {
+					AuthenticateUser au = new AuthenticateUser();
+					if(au.checkUser(user.getUsername(), user.getPassword()))
+						sendMessage("Good.");
+					else sendMessage("Bad.");
+				}
+				else {
+					sendMessage("Line received: " + request.getUser().getUsername());
+				}
 			}
-		} catch (IOException ioe) {
+		}
+		
+		// Catch things
+		catch (IOException ioe) {
 			System.out.println(s.getInetAddress() + ":" + s.getPort() + " disconnected.");
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println("CNFE in reading request: " + cnfe.getMessage());
 		}
+		
 		// Close readers, writers, socket
 		finally {
 			serverOut.close();
