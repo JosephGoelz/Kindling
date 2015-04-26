@@ -36,6 +36,7 @@ public class MatchingActivity extends ActionBarActivity {
         setContentView(R.layout.activity_matching);
         setTitle("Matching");
 
+        img = (ImageView) findViewById(R.id.leftButton);
         ImageButton msgBtn;
         msgBtn = (ImageButton) findViewById(R.id.messageButton);
         msgBtn.setOnClickListener(new View.OnClickListener() {
@@ -53,13 +54,18 @@ public class MatchingActivity extends ActionBarActivity {
             public void onClick(View v) {
                 //put boolean variable
                 popUp();
-                animation.start();
+                animation();
+                //animation.start();
             }
 
         });
-
         //Thread animation
-        img = (ImageView) findViewById(R.id.leftButton);
+
+        setupCards();
+
+    }
+
+    private void animation() {
 
         animation = new Thread() {
             public void run() {
@@ -96,15 +102,15 @@ public class MatchingActivity extends ActionBarActivity {
                     }
                     if(stopAnimation == 1)
                     {
+                        stopAnimation = 0;
+                        imageChanger = true;
+                        imageChanger1 = false;
                         break;
                     }
 
                 }
             }
         };
-
-        setupCards();
-
     }
 
     private void setupCards() {
@@ -150,6 +156,7 @@ public class MatchingActivity extends ActionBarActivity {
             AlertDialog helpDialog = picturePopUp.create();
             helpDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             helpDialog.show();
+            animation.start();
     }
 
 }
