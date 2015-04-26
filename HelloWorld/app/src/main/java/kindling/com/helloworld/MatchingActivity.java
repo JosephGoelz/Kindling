@@ -149,7 +149,7 @@ public class MatchingActivity extends ActionBarActivity {
         cardModel.setOnCardDimissedListener(new CardModel.OnCardDimissedListener() {
             @Override
             public void onLike() {
-                System.out.println("I like the card");
+                popUp();
             }
 
             @Override
