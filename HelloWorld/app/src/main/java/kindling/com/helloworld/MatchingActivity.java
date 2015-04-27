@@ -81,12 +81,20 @@ public class MatchingActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 //put boolean variable
-                popUp();
+                popUp(false);
                 animation();
             }
 
         });
-
+        //When information Button clicked
+        ImageButton information;
+        information = (ImageButton) findViewById(R.id.informationButton);
+        information.setOnClickListener(new OnClickListener() {
+           @Override
+            public void onClick(View v) {
+                    popUp(true);
+           }
+        });
         setupCards();
 
     }
@@ -167,7 +175,7 @@ public class MatchingActivity extends ActionBarActivity {
                 public void onDislike() {
                     // for some reason this is what's called when you swipe right...
                     System.out.println("I dislike the card");
-                    popUp();
+                    popUp(false);
                     animation();
                 }
             });
@@ -177,9 +185,19 @@ public class MatchingActivity extends ActionBarActivity {
         cardContainer.setAdapter(adapter);
     }
 
-    private void popUp() {
-            image = new ImageView(this);
-            image.setImageResource(R.drawable.its_a_match);
+    private void popUp(boolean information) {
+
+            if(!information)
+            {
+                //matching animation pops up
+                image = new ImageView(this);
+                image.setImageResource(R.drawable.its_a_match);
+
+            }else {
+                //information image pops up
+                image = new ImageView(this);
+                image.setImageResource(R.drawable.how_to_play);
+            }
 
             AlertDialog.Builder picturePopUp = new AlertDialog.Builder(this);
             picturePopUp.setView(image);
@@ -188,5 +206,6 @@ public class MatchingActivity extends ActionBarActivity {
             helpDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             helpDialog.show();
     }
+
 
 }
