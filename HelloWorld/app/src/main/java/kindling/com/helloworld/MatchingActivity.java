@@ -146,10 +146,10 @@ public class MatchingActivity extends ActionBarActivity {
 
         SimpleCardStackAdapter adapter = new SimpleCardStackAdapter(this);
 
-        ArrayList<String> names = new ArrayList<>(Arrays.asList("Aaron Cote", "Max Nikias", "David Kempe"));
-        ArrayList<Integer> resources = new ArrayList<>(Arrays.asList(R.drawable.aaron_cote, R.drawable.max_nikias, R.drawable.david_kempe));
+        ArrayList<String> names = new ArrayList<>(Arrays.asList("Ford Filer", "Mark Redekopp", "Aaron Cote", "Max Nikias", "David Kempe"));
+        ArrayList<Integer> resources = new ArrayList<>(Arrays.asList(R.drawable.ford_filer, R.drawable.mark_redekopp, R.drawable.aaron_cote, R.drawable.max_nikias, R.drawable.david_kempe));
 
-        for (int i=0; i<3; i++) {
+        for (int i=0; i<5; i++) {
             CardModel cardModel = new CardModel(names.get(i), null, r.getDrawable(resources.get(i)));
             cardModel.setOnClickListener(new CardModel.OnClickListener() {
                 @Override
