@@ -29,7 +29,7 @@ public abstract class Question {
         //runs animation thread
     }
 
-    public abstract void setCorrectAnswer(int index, String correctAnswer);
+    public abstract void setCorrectAnswer(String correctAnswer);
     //chooses a correctAnswer index and overrides
     //the option text with the correctanswer
 }

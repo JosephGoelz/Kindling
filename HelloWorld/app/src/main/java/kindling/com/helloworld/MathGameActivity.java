@@ -13,6 +13,10 @@ import android.widget.ImageButton;
 import java.util.TimerTask;
 import java.util.Timer;
 
+import model.kindling.Application;
+import model.kindling.Question;
+import model.kindling.MathQuestion;
+
 public class MathGameActivity extends ActionBarActivity {
 
     Button answer_one, answer_two, answer_three, answer_four;
@@ -20,6 +24,9 @@ public class MathGameActivity extends ActionBarActivity {
     int counter = 30;
     String string_Counter;
     TextView timerUpdate;
+
+    //here is where we create the question
+    MathQuestion mq;
 
     public static final String question = "Question";
     public static final String answer1 = "Answer1";
@@ -29,6 +36,10 @@ public class MathGameActivity extends ActionBarActivity {
 
 
     protected void onCreate(Bundle savedInstanceState) {
+        mq = new MathQuestion();
+        mq.populateAnswers();
+        mq.generateQuestionText();
+        mq.setCorrectAnswer( mq.correctAnswer);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mathgame);
@@ -46,34 +57,58 @@ public class MathGameActivity extends ActionBarActivity {
         answer_four = (Button) findViewById(R.id.mathGame_AnswerButton4);
 
         // update question and choice
-        question_text.setText(question);
-        answer_one.setText(answer1);
-        answer_two.setText(answer2);
-        answer_three.setText(answer3);
-        answer_four.setText(answer4);
+        question_text.setText(mq.questionText);
+        answer_one.setText(mq.aAnswer);
+        answer_two.setText(mq.bAnswer);
+        answer_three.setText(mq.cAnswer);
+        answer_four.setText(mq.dAnswer);
 
         answer_one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //add functions here for the first button clicked.
+                if(mq.correctAnswerIndex == 0){
+                    mq.correctAnswer();
+                }
+                else{
+                    mq.incorrectAnswer();
+                }
             }
         });
-        answer_one.setOnClickListener(new View.OnClickListener() {
+        answer_two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //add functions here for the second button clicked.
+                if(mq.correctAnswerIndex == 1){
+                    mq.correctAnswer();
+                }
+                else{
+                    mq.incorrectAnswer();
+                }
             }
         });
-        answer_one.setOnClickListener(new View.OnClickListener() {
+        answer_three.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //add functions here for the third button clicked.
+                if(mq.correctAnswerIndex == 2){
+                    mq.correctAnswer();
+                }
+                else{
+                    mq.incorrectAnswer();
+                }
             }
         });
-        answer_one.setOnClickListener(new View.OnClickListener() {
+        answer_four.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //add functions here for the  button clicked.
+                if(mq.correctAnswerIndex == 3){
+                    mq.correctAnswer();
+                }
+                else{
+                    mq.incorrectAnswer();
+                }
             }
         });
         timeCounter();
@@ -96,7 +131,8 @@ public class MathGameActivity extends ActionBarActivity {
                 counter--;
                 if(counter == 0) {
                     //when counter is 0, then next game pops up
-                    counter = 30;
+                    mq.incorrectAnswer();
+                    counter = 20;
                 }
 
             }

@@ -28,7 +28,9 @@ public class MathQuestion extends Question {
     }
 
     @Override
-    public void setCorrectAnswer(int index, String correctAnswer) {
+    public void setCorrectAnswer(String correctAnswer) {
+        Random randy = new Random();
+        int index = randy.nextInt(4);
         if(index == 0){
             aAnswer = correctAnswer;
         }
