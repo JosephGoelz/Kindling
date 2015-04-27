@@ -1,6 +1,5 @@
 package kindling.com.helloworld;
 
-import android.app.Application;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
@@ -24,7 +23,7 @@ import database.RequestType;
 import database.tasks.AuthTask;
 import helper.StringFunctions;
 import model.kindling.User;
-
+import model.kindling.Application;
 
 public class LoginActivity extends ActionBarActivity {
 
@@ -68,7 +67,6 @@ public class LoginActivity extends ActionBarActivity {
                     return;
                 }
 
-                // TODO Check with the server if the login information is legitimate
                 // Make user to send from information given
                 User sendU = new User(usernameEditText.getText().toString());
                 sendU.setPassword(passwordEditText.getText().toString());
@@ -91,7 +89,8 @@ public class LoginActivity extends ActionBarActivity {
                     return;
                 }
 
-                model.kindling.Application.initApplication(returned);
+                // initialize application with a user
+                Application.initApplication(returned);
 
                 Intent intent = new Intent(v.getContext(), MatchingActivity.class);
                 startActivity(intent);

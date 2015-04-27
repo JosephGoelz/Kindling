@@ -1,5 +1,9 @@
 package kindling.com.helloworld;
 
+import model.kindling.Application;
+import model.kindling.Range;
+import model.kindling.User;
+
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -7,10 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import helper.RangeSeekBar;
-import model.kindling.Application;
-import model.kindling.Range;
 
 public class SettingsActivity extends ActionBarActivity {
 
@@ -36,30 +39,52 @@ public class SettingsActivity extends ActionBarActivity {
         // set up age range seek bar
         ageSeekBar = new RangeSeekBar<Integer>(this);
         ageSeekBar.setRangeValues(18, 60);
-        ageSeekBar.setSelectedMinValue(19); // TODO do this dynamically
-        ageSeekBar.setSelectedMaxValue(24);
+
+        // initial values
+        Range ageRange = Application.getUser().getAgeRange();
+        if (ageRange == null) {
+            Range newRange = new Range(Application.getUser().getAge(), Application.getUser().getAge() + 2);
+            Application.getUser().setAgeRange(newRange);
+            ageRange = newRange;
+        }
+        ageSeekBar.setSelectedMinValue(ageRange.getStart());
+        ageSeekBar.setSelectedMaxValue(ageRange.getFinish());
+
+        // listener
         RelativeLayout ageLayout = (RelativeLayout) findViewById(R.id.ageRelativeLayout);
         ageLayout.addView(ageSeekBar);
         ageSeekBar.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener<Integer>() {
             @Override
             public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Integer minValue, Integer maxValue) {
-//                Range ageRange = new Range(minValue, maxValue); TODO uncomment and actually alter data
-//                Application.getUser().setAgeRange(ageRange);
+                Range ageRange = new Range(minValue, maxValue);
+                Application.getUser().setAgeRange(ageRange);
+                Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
             }
         });
 
         // set up intelligence range seek bar
         intelligenceSeekBar = new RangeSeekBar<Integer>(this);
         intelligenceSeekBar.setRangeValues(0, 100);
-        intelligenceSeekBar.setSelectedMinValue(80); // TODO do this dynamically
-        intelligenceSeekBar.setSelectedMaxValue(100);
+
+        // setup initial values
+        Range intelligenceRange = Application.getUser().getIntelRange();
+        if (intelligenceRange == null) {
+            Range newRange = new Range(80, 100);
+            Application.getUser().setAgeRange(newRange);
+            intelligenceRange = newRange;
+        }
+        intelligenceSeekBar.setSelectedMinValue(intelligenceRange.getStart());
+        intelligenceSeekBar.setSelectedMaxValue(intelligenceRange.getFinish());
+
+        // update listener
         RelativeLayout intelligenceLayout = (RelativeLayout) findViewById(R.id.intelligenceRelativeLayout);
         intelligenceLayout.addView(intelligenceSeekBar);
         intelligenceSeekBar.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener<Integer>() {
             @Override
             public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Integer minValue, Integer maxValue) {
-//                Range intelligenceRange = new Range(minValue, maxValue); TODO uncomment and actually alter data
-//                Application.getUser().setIntelRange(intelligenceRange);
+                Range intelligenceRange = new Range(minValue, maxValue);
+                Application.getUser().setIntelRange(intelligenceRange);
+                Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
             }
         });
     }
