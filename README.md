@@ -1,5 +1,11 @@
 ##CSCI 201 Team Project Repository
 
+###How to build me!
+
+To build this project, you'll have to have working Android environment set up. We as a team have been using Android Studio, but you should be able to open and run Android projects with Android Studio, Eclipse, or IntelliJ. You should have the Android SDK and SDK tools installed on whatever IDE you choose. We personally opted to install this with [this link](https://developer.android.com/sdk/index.html) which gave us the Android Studio IDE, Android SDK tools, the Android 5.0 platform, and the Android 5.0 emulator system image. Installing all of this together simplified our environment set-up, and as Eclipse support is being eclipsed in favor of Android Studio by Google, we decided it would be better to opt for Android Studio over other IDE's.
+
+Once you have a working Android environment set up, then you can just go to File -> Open and open wherever you have saved the project you want to open. Then, you can build and run by clicking the green triangle in the toolbar, or hit Run -> Run.
+
 ###Contact Information
 **Developer 1**:
   + Name: Trevor Cai
