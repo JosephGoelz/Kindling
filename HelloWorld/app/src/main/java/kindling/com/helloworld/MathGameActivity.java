@@ -1,6 +1,7 @@
 package kindling.com.helloworld;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -32,6 +33,9 @@ public class MathGameActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mathgame);
         setTitle("Math Game");
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         question_text = (TextView) findViewById(R.id.mathGame_questionText);
         timerUpdate = (TextView) findViewById(R.id.mathGame_counter);

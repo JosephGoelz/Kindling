@@ -46,6 +46,15 @@ public class MatchingActivity extends ActionBarActivity {
 
         img = (ImageView) findViewById(R.id.leftButton);
 
+        ImageButton matchingBtn = (ImageButton) findViewById(R.id.machingOwl);
+        matchingBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), MathGameActivity.class);
+                startActivity(intent);
+            }
+        });
+
         ImageButton msgBtn;
         msgBtn = (ImageButton) findViewById(R.id.messageButton);
         msgBtn.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +62,6 @@ public class MatchingActivity extends ActionBarActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), MainMessagesActivity.class);
                 startActivity(intent);
-
             }
         });
 
