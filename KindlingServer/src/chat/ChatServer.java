@@ -60,7 +60,7 @@ public class ChatServer {
 	public void sendMessageToClients(ChatThread sending, String str) {
 		for (ChatThread ct : chats) {
 			if (!sending.equals(ct)) {
-				ct.sendLine(str);
+				ct.sendLine(sending.getUsername() + ": " + str);
 			}
 		}
 	}

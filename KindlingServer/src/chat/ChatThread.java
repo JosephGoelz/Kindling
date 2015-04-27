@@ -11,6 +11,7 @@ public class ChatThread extends Thread {
 	private BufferedReader serverIn;
 	private PrintWriter serverOut;
 	private ChatServer server;
+	private String username = null;
 	
 	// Initializes thread to communicate with specified socket
 	public ChatThread(Socket s, ChatServer server) {
@@ -19,6 +20,11 @@ public class ChatThread extends Thread {
 		try {
 			serverIn = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			serverOut = new PrintWriter(s.getOutputStream());
+			
+			do {
+				username = serverIn.readLine();
+			} while(username == null);
+			
 		} catch (IOException ioe) {
 			System.out.println("IOE in ChatThread constructor: " + ioe.getMessage());
 		}
@@ -28,6 +34,11 @@ public class ChatThread extends Thread {
 	public void sendLine(String line) {
 		serverOut.println(line);
 		serverOut.flush();
+	}
+	
+	// Get name
+	public String getUsername() {
+		return username;
 	}
 
 	public void run() {
