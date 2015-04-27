@@ -21,7 +21,7 @@ public class MathGameActivity extends ActionBarActivity {
 
     Button answer_one, answer_two, answer_three, answer_four;
     TextView question_text;
-    int counter = 30;
+    int counter = 20;
     String string_Counter;
     TextView timerUpdate;
 
@@ -124,7 +124,14 @@ public class MathGameActivity extends ActionBarActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        timerUpdate.setText("0:"+string_Counter);
+                        if(counter < 9)
+                        {
+                            timerUpdate.setText("0:0"+string_Counter);
+                        }
+                        else {
+                            timerUpdate.setText("0:"+string_Counter);
+                        }
+
 
                     }
                 });

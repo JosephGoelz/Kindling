@@ -155,7 +155,7 @@
         android:layout_width="50dp"
         android:layout_height="25dp"
         android:id="@+id/mathGame_counter"
-        android:text="0:30"
+        android:text="0:20"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_below="@+id/mathGame_time"
