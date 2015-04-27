@@ -1,9 +1,15 @@
 package model.kindling;
 //the model package will handle the apps data
+
+import java.io.Serializable;
+
 /**
  * Created by Jay on 4/21/2015.
  */
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     //the user class as described in the DDD
     private String name, userName, password;
     private int age, intelLevel;
@@ -15,6 +21,12 @@ public class User {
 
     public User(){
         //possibly set to some default values
+    }
+
+    // Constructor with username.
+    public User(String _username){
+        //possibly set to some default values
+        this.userName = _username;
     }
 
     public void setName (String _name){

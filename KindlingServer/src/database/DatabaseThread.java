@@ -24,6 +24,7 @@ public class DatabaseThread extends Thread {
 		}
 	}
 
+	// Sends an object over the network
 	public void sendObject(Object obj) {
 		try {
 			serverOut.writeObject(obj);
@@ -48,15 +49,16 @@ public class DatabaseThread extends Thread {
 				// TODO add code to do different things based on request type
 				if(rt == RequestType.AUTHENTICATE_USER) {
 					AuthenticateUser au = new AuthenticateUser();
-					// If the user sent over exists and has the correct password
-					User returned = au.checkUser(user.getUsername(), user.getPassword());
+					User returned = au.checkUser(user.getUserName(), user.getPassword());
+					// If the user sent over exists and has the correct password, send valid
 					if(returned != null)
 						sendObject(new DatabaseRequest(returned, RequestType.VALID));
+					// Otherwise invalid
 					else
 						sendObject(new DatabaseRequest(null,RequestType.INVALID));
 				}
 				else {
-					sendObject("Line received: " + request.getUser().getUsername());
+					sendObject("Line received: " + request.getUser().getUserName());
 				}
 			}
 		}

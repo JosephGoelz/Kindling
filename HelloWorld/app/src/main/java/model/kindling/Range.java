@@ -1,39 +1,29 @@
 package model.kindling;
 
+import java.io.Serializable;
+
 /**
  * Created by Jay on 4/21/2015.
  */
-public class Range {
-    private int start, finish;
+public class Range implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    public Range(){ //no arguments
-        start = 0;
-        finish = 0;
-    }
+    private final int start, finish;
 
     public Range(int _start, int _finish){
         this.start = _start;
         this.finish = _finish;
     }
 
-    private void setStart(int setter){
-        start = setter;
-    }
-
-    private void setFinish(int setter){
-        finish = setter;
-    }
-
-    private void setStartFinish(int _start, int _finish){
-        start  = _start;
-        finish = _finish;
-    }
-
-    private int getStart(){
+    public int getStart(){
         return start;
     }
 
-    private int getFinish(){
+    public int getFinish(){
         return finish;
+    }
+
+    public boolean inRange(int n) {
+        return (n >= start) && (n <= finish);
     }
 }

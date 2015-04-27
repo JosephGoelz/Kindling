@@ -6,8 +6,7 @@ public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	//the user class as described in the DDD
-	private final String username;
-    private String name, password;
+    private String name, userName, password;
     private int age, intelLevel;
     private int sexualOrientation; // 0 = into males, 1 = into females, 2 = into both
     private int sex; // 0 = male, 1 = female
@@ -15,10 +14,13 @@ public class User implements Serializable {
     private Range ageRange;
     //add an image format tbd
 
+    // Constructor
+    public User() {}
+    
     // Constructor - Username is required.
     public User(String _username){
         //possibly set to some default values
-    	this.username = _username;
+    	this.userName = _username;
     }
 
     public void setName (String _name){
@@ -27,9 +29,12 @@ public class User implements Serializable {
     public String getName (){
         return name;
     }
-
-    public String getUsername (){
-        return username;
+    
+    public void setUserName (String _userName){
+        this.userName = _userName;
+    }
+    public String getUserName (){
+        return userName;
     }
 
     public int getAge() {
