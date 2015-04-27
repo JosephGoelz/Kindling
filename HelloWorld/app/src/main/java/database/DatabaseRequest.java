@@ -27,4 +27,8 @@ public class DatabaseRequest implements Serializable {
     public ArrayList<User> getListUsers() {
         return users;
     }
+
+    public RequestType getRequestType() {
+        return type;
+    }
 }
