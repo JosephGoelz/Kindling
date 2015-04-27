@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
 import java.util.TimerTask;
 import java.util.Timer;
 
@@ -21,7 +23,7 @@ public class MathGameActivity extends ActionBarActivity {
 
     Button answer_one, answer_two, answer_three, answer_four;
     TextView question_text;
-    int counter = 20;
+    int counter;
     String string_Counter;
     TextView timerUpdate;
 
@@ -36,6 +38,7 @@ public class MathGameActivity extends ActionBarActivity {
 
 
     protected void onCreate(Bundle savedInstanceState) {
+        counter = 20;
         mq = new MathQuestion();
         mq.populateAnswers();
         mq.generateQuestionText();
@@ -69,13 +72,12 @@ public class MathGameActivity extends ActionBarActivity {
                 //add functions here for the first button clicked.
                 if(mq.correctAnswerIndex == 0){
                     mq.correctAnswer();
-                    Bundle tempBundle = new Bundle();
                 }
                 else{
                     mq.incorrectAnswer();
                 }
-                Bundle tempBundle = new Bundle();
-                onCreate(tempBundle);
+                finish();
+                startActivity(getIntent());
             }
         });
         answer_two.setOnClickListener(new View.OnClickListener() {
@@ -88,8 +90,8 @@ public class MathGameActivity extends ActionBarActivity {
                 else{
                     mq.incorrectAnswer();
                 }
-                Bundle tempBundle = new Bundle();
-                onCreate(tempBundle);
+                finish();
+                startActivity(getIntent());
             }
         });
         answer_three.setOnClickListener(new View.OnClickListener() {
@@ -102,8 +104,8 @@ public class MathGameActivity extends ActionBarActivity {
                 else{
                     mq.incorrectAnswer();
                 }
-                Bundle tempBundle = new Bundle();
-                onCreate(tempBundle);
+                finish();
+                startActivity(getIntent());
             }
         });
         answer_four.setOnClickListener(new View.OnClickListener() {
@@ -116,8 +118,8 @@ public class MathGameActivity extends ActionBarActivity {
                 else{
                     mq.incorrectAnswer();
                 }
-                Bundle tempBundle = new Bundle();
-                onCreate(tempBundle);
+                finish();
+                startActivity(getIntent());
             }
         });
         timeCounter();
@@ -148,9 +150,8 @@ public class MathGameActivity extends ActionBarActivity {
                 if(counter == 0) {
                     //when counter is 0, then next game pops up
                     mq.incorrectAnswer();
-                    counter = 20;
-                    Bundle tempBundle = new Bundle();
-                    onCreate(tempBundle);
+                    finish();
+                    startActivity(getIntent());
                 }
 
             }

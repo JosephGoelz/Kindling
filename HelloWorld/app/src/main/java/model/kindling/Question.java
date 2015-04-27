@@ -1,5 +1,7 @@
 package model.kindling;
 
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 /**
@@ -19,13 +21,14 @@ public abstract class Question {
 
     public void correctAnswer(){
         //increments intelligence rating by one
-        Application.getUser().incrementIntel();
-        //runs animation thread
+        if(Application.isLoggedIn())
+            Application.getUser().incrementIntel();
     }
 
     public void incorrectAnswer(){
         //decrements intelligence rating by one
-        Application.getUser().decrementIntel();
+        if(Application.isLoggedIn())
+            Application.getUser().decrementIntel();
         //runs animation thread
     }
 

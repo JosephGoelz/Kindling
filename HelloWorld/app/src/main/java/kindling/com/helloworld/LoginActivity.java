@@ -2,28 +2,18 @@ package kindling.com.helloworld;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.view.Window;
-import android.support.v7.app.ActionBar;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
-
-import database.DatabaseRequest;
-import database.RequestType;
 import database.tasks.AuthTask;
 import helper.StringFunctions;
-import model.kindling.User;
 import model.kindling.Application;
+import model.kindling.User;
 
 public class LoginActivity extends ActionBarActivity {
 
