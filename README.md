@@ -6,6 +6,10 @@ To build this project, you'll have to have working Android environment set up. W
 
 Once you have a working Android environment set up, then you can just go to File -> Open and open wherever you have saved the project you want to open. Then, you can build and run by clicking the green triangle in the toolbar, or hit Run -> Run.
 
+Once the app is loaded, login as a sample user of ours.
+Username: BMoney
+Password: password
+
 ###Contact Information
 **Developer 1**:
   + Name: Trevor Cai
