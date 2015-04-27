@@ -19,11 +19,13 @@ public abstract class Question {
 
     public void correctAnswer(){
         //increments intelligence rating by one
+        Application.getUser().incrementIntel();
         //runs animation thread
     }
 
     public void incorrectAnswer(){
         //decrements intelligence rating by one
+        Application.getUser().decrementIntel();
         //runs animation thread
     }
 

@@ -87,4 +87,15 @@ public class User {
         password = p;
     }
 
+    public void incrementIntel(){
+        if(intelLevel < 100){
+            intelLevel = intelLevel + 1;
+        }
+    }
+
+    public void decrementIntel(){
+        if(intelLevel > 0){
+            intelLevel = intelLevel - 1;
+        }
+    }
 }
