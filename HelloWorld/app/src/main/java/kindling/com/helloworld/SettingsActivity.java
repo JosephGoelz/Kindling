@@ -1,5 +1,6 @@
 package kindling.com.helloworld;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,6 +24,11 @@ public class SettingsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         setTitle("Settings");
+
+        //Hiding grey title bar at the top of the screen.
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
 
         setupSeekbars();
     }
