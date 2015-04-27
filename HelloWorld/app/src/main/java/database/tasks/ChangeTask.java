@@ -1,7 +1,5 @@
 package database.tasks;
 
-import android.os.AsyncTask;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -10,18 +8,15 @@ import java.net.Socket;
 
 import database.DatabaseRequest;
 import database.RequestType;
-import kindling.com.helloworld.LoginActivity;
-import kindling.com.helloworld.R;
-import model.kindling.Application;
 import model.kindling.User;
 
 /**
- * Created by tcai on 4/26/15.
+ * Created by winstojl on 4/26/15.
  */
-public class AuthTask implements Runnable {
+public class ChangeTask implements Runnable {
     private User sendU, finalUser = null;
 
-    public AuthTask(User sendU) {
+    public ChangeTask(User sendU) {
         this.sendU = sendU;
     }
 
