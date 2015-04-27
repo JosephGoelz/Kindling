@@ -1,9 +1,11 @@
 package kindling.com.helloworld;
 
+import android.app.Application;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -12,7 +14,16 @@ import android.widget.Toast;
 import android.view.Window;
 import android.support.v7.app.ActionBar;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
+import database.DatabaseRequest;
+import database.RequestType;
+import database.tasks.AuthTask;
 import helper.StringFunctions;
+import model.kindling.User;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -51,15 +62,39 @@ public class LoginActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 // Check if the login information is valid.
-                if(invalidFields()) {
+                if (invalidFields()) {
                     Toast.makeText(getApplicationContext(),
                             R.string.invalid_input, Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
                 // TODO Check with the server if the login information is legitimate
-                else {
-                    Intent intent = new Intent(v.getContext(), MatchingActivity.class);
-                    startActivity(intent);
+                // Make user to send from information given
+                User sendU = new User(usernameEditText.getText().toString());
+                sendU.setPassword(passwordEditText.getText().toString());
+
+                // Send user
+                AuthTask at = new AuthTask(sendU);
+                Thread t = new Thread(at);
+                t.start();
+                try {
+                    t.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
+                User returned = at.getResult();
+
+                // If failed, show toast and leave
+                if (returned == null) {
+                    Toast.makeText(getApplicationContext(),
+                            R.string.auth_fail, Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                model.kindling.Application.initApplication(returned);
+
+                Intent intent = new Intent(v.getContext(), MatchingActivity.class);
+                startActivity(intent);
             }
         });
 

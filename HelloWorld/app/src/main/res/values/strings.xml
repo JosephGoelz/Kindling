@@ -27,4 +27,7 @@
     <string name="title_activity_matching">MatchingActivity</string>
     <string name="title_activity_wordgame">WordGameActivity</string>
     <string name="title_activity_mathgame">MathGameActivity</string>
+    <string name="server_IP">198.199.92.13</string>
+    <string name="auth_fail">Username or password was incorrect</string>
+
 </resources>
