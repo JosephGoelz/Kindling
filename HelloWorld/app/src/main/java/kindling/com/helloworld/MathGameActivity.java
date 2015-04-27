@@ -9,11 +9,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageButton;
+import java.util.TimerTask;
+import java.util.Timer;
 
 public class MathGameActivity extends ActionBarActivity {
 
     Button answer_one, answer_two, answer_three, answer_four;
     TextView question_text;
+    int counter = 30;
+    String string_Counter;
+    TextView timerUpdate;
 
     public static final String question = "Question";
     public static final String answer1 = "Answer1";
@@ -29,6 +34,7 @@ public class MathGameActivity extends ActionBarActivity {
         setTitle("Math Game");
 
         question_text = (TextView) findViewById(R.id.mathGame_questionText);
+        timerUpdate = (TextView) findViewById(R.id.mathGame_time);
 
         answer_one = (Button) findViewById(R.id.mathGame_AnswerButton1);
         answer_two = (Button) findViewById(R.id.mathGame_AnswerButton1);
@@ -66,9 +72,31 @@ public class MathGameActivity extends ActionBarActivity {
                 //add functions here for the  button clicked.
             }
         });
+        timeCounter();
+
     }
+    // when the game is started, call this function, then count starts
+    public void timeCounter() {
+        Timer time = new Timer();
+        TimerTask task = new TimerTask(){
+            public void run() {
+                counter--;
+                string_Counter = String.valueOf(counter);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        timerUpdate.setText("0:"+string_Counter);
 
+                    }
+                });
+                counter--;
+                if(counter == 0) {
+                    //when counter is 0, then next game pops up
+                    counter = 30;
+                }
 
-
-
+            }
+        };
+        time.schedule(task, 1000,1000);
+    }
 }
