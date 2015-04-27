@@ -69,10 +69,13 @@ public class MathGameActivity extends ActionBarActivity {
                 //add functions here for the first button clicked.
                 if(mq.correctAnswerIndex == 0){
                     mq.correctAnswer();
+                    Bundle tempBundle = new Bundle();
                 }
                 else{
                     mq.incorrectAnswer();
                 }
+                Bundle tempBundle = new Bundle();
+                onCreate(tempBundle);
             }
         });
         answer_two.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +88,8 @@ public class MathGameActivity extends ActionBarActivity {
                 else{
                     mq.incorrectAnswer();
                 }
+                Bundle tempBundle = new Bundle();
+                onCreate(tempBundle);
             }
         });
         answer_three.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +102,8 @@ public class MathGameActivity extends ActionBarActivity {
                 else{
                     mq.incorrectAnswer();
                 }
+                Bundle tempBundle = new Bundle();
+                onCreate(tempBundle);
             }
         });
         answer_four.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +116,8 @@ public class MathGameActivity extends ActionBarActivity {
                 else{
                     mq.incorrectAnswer();
                 }
+                Bundle tempBundle = new Bundle();
+                onCreate(tempBundle);
             }
         });
         timeCounter();
@@ -140,6 +149,8 @@ public class MathGameActivity extends ActionBarActivity {
                     //when counter is 0, then next game pops up
                     mq.incorrectAnswer();
                     counter = 20;
+                    Bundle tempBundle = new Bundle();
+                    onCreate(tempBundle);
                 }
 
             }
