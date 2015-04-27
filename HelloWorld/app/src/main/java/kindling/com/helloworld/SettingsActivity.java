@@ -16,8 +16,6 @@ public class SettingsActivity extends ActionBarActivity {
 
     private RangeSeekBar<Integer> ageSeekBar;
     private RangeSeekBar<Integer> intelligenceSeekBar;
-    private TextView ageTextView;
-    private TextView intelligenceTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +32,6 @@ public class SettingsActivity extends ActionBarActivity {
     }
 
     private void setupSeekbars() {
-        ageTextView = (TextView) findViewById(R.id.ageTextView);
-        intelligenceTextView = (TextView) findViewById(R.id.intelligenceTextView);
-        ageTextView.setText("19 - 24"); // TODO do this dynamically
-        intelligenceTextView.setText("80-100");
 
         // set up age range seek bar
         ageSeekBar = new RangeSeekBar<Integer>(this);
@@ -51,10 +45,6 @@ public class SettingsActivity extends ActionBarActivity {
             public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Integer minValue, Integer maxValue) {
 //                Range ageRange = new Range(minValue, maxValue); TODO uncomment and actually alter data
 //                Application.getUser().setAgeRange(ageRange);
-                ageTextView.setText(String.valueOf(minValue) + " - " + String.valueOf(maxValue));
-                if (maxValue == 60) {
-                    ageTextView.setText(String.valueOf(minValue) + " - 60+");
-                }
             }
         });
 
@@ -70,7 +60,6 @@ public class SettingsActivity extends ActionBarActivity {
             public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Integer minValue, Integer maxValue) {
 //                Range intelligenceRange = new Range(minValue, maxValue); TODO uncomment and actually alter data
 //                Application.getUser().setIntelRange(intelligenceRange);
-                intelligenceTextView.setText(String.valueOf(minValue) + " - " + String.valueOf(maxValue));
             }
         });
     }
