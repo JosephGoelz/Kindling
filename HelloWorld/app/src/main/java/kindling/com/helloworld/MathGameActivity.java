@@ -34,19 +34,19 @@ public class MathGameActivity extends ActionBarActivity {
         setTitle("Math Game");
 
         question_text = (TextView) findViewById(R.id.mathGame_questionText);
-        timerUpdate = (TextView) findViewById(R.id.mathGame_time);
+        timerUpdate = (TextView) findViewById(R.id.mathGame_counter);
 
         answer_one = (Button) findViewById(R.id.mathGame_AnswerButton1);
-        answer_two = (Button) findViewById(R.id.mathGame_AnswerButton1);
-        answer_three = (Button) findViewById(R.id.mathGame_AnswerButton1);
-        answer_four = (Button) findViewById(R.id.mathGame_AnswerButton1);
+        answer_two = (Button) findViewById(R.id.mathGame_AnswerButton2);
+        answer_three = (Button) findViewById(R.id.mathGame_AnswerButton3);
+        answer_four = (Button) findViewById(R.id.mathGame_AnswerButton4);
 
         // update question and choice
         question_text.setText(question);
         answer_one.setText(answer1);
-        answer_one.setText(answer2);
-        answer_one.setText(answer3);
-        answer_one.setText(answer4);
+        answer_two.setText(answer2);
+        answer_three.setText(answer3);
+        answer_four.setText(answer4);
 
         answer_one.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +80,7 @@ public class MathGameActivity extends ActionBarActivity {
         Timer time = new Timer();
         TimerTask task = new TimerTask(){
             public void run() {
-                counter--;
+
                 string_Counter = String.valueOf(counter);
                 runOnUiThread(new Runnable() {
                     @Override
@@ -99,4 +99,5 @@ public class MathGameActivity extends ActionBarActivity {
         };
         time.schedule(task, 1000,1000);
     }
+
 }

@@ -23,8 +23,8 @@ public class WordGameActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mathgame);
-        setTitle("Math Game");
+        setContentView(R.layout.activity_wordgame);
+        setTitle("Word Game");
 
 
 
@@ -32,16 +32,16 @@ public class WordGameActivity extends ActionBarActivity {
         question_text = (TextView) findViewById(R.id.wordGame_questionText);
 
         answer_one = (Button) findViewById(R.id.wordGame_AnswerButton1);
-        answer_two = (Button) findViewById(R.id.wordGame_AnswerButton1);
-        answer_three = (Button) findViewById(R.id.wordGame_AnswerButton1);
-        answer_four = (Button) findViewById(R.id.wordGame_AnswerButton1);
+        answer_two = (Button) findViewById(R.id.wordGame_AnswerButton2);
+        answer_three = (Button) findViewById(R.id.wordGame_AnswerButton3);
+        answer_four = (Button) findViewById(R.id.wordGame_AnswerButton4);
 
         // update question and choice
         question_text.setText(question);
         answer_one.setText(answer1);
-        answer_one.setText(answer2);
-        answer_one.setText(answer3);
-        answer_one.setText(answer4);
+        answer_two.setText(answer2);
+        answer_three.setText(answer3);
+        answer_four.setText(answer4);
 
         answer_one.setOnClickListener(new View.OnClickListener() {
             @Override

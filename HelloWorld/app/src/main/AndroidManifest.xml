@@ -45,6 +45,14 @@
             android:name=".MatchingActivity"
             android:label="@string/title_activity_matching" >
         </activity>
+        <activity
+            android:name=".WordGameActivity"
+            android:label="@string/title_activity_wordgame" >
+        </activity>
+        <activity
+            android:name=".MathGameActivity"
+            android:label="@string/title_activity_mathgame" >
+        </activity>
     </application>
 
 
