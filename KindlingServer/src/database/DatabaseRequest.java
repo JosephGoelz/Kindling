@@ -2,7 +2,7 @@ package database;
 
 import java.io.Serializable;
 
-import users.User;
+import model.kindling.User;
 
 public class DatabaseRequest implements Serializable {
 	private static final long serialVersionUID = 1L;

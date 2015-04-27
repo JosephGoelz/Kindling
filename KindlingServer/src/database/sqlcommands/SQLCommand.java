@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import users.Range;
-import users.User;
+import model.kindling.Range;
+import model.kindling.User;
 
 public abstract class SQLCommand {
 	protected static final String DRIVER = "com.mysql.jdbc.Driver";

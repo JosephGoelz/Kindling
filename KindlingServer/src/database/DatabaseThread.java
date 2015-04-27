@@ -5,7 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import users.User;
+import model.kindling.User;
 import database.sqlcommands.AuthenticateUser;
 
 public class DatabaseThread extends Thread {

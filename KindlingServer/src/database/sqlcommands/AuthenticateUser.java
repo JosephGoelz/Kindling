@@ -3,7 +3,7 @@ package database.sqlcommands;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import users.User;
+import model.kindling.User;
 
 public class AuthenticateUser extends SQLCommand {
 	private static String query = "SELECT * FROM users WHERE username='";
