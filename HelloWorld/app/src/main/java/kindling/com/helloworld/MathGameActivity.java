@@ -38,7 +38,7 @@ public class MathGameActivity extends ActionBarActivity {
 
 
     protected void onCreate(Bundle savedInstanceState) {
-        counter = 20;
+        counter = 21;
         mq = new MathQuestion();
         mq.populateAnswers();
         mq.generateQuestionText();
@@ -136,30 +136,33 @@ public class MathGameActivity extends ActionBarActivity {
         time = new Timer();
         TimerTask task = new TimerTask(){
             public void run() {
-
+                counter--;
+                if(counter == 0) {
+                    //when counter is 0, then next game pops up
+                    // mq.incorrectAnswer();
+                    //time.cancel();
+                    counter = 20;
+                    time.cancel();
+                    finish();
+                }
                 string_Counter = String.valueOf(counter);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(counter < 9)
+                        if(counter < 10)
                         {
+                            System.out.println("check 1 : " + counter);
                             timerUpdate.setText("0:0"+string_Counter);
                         }
                         else {
+                            System.out.println("check 2 : " + counter);
                             timerUpdate.setText("0:"+string_Counter);
                         }
 
 
                     }
                 });
-                counter--;
-                if(counter == 0) {
-                    //when counter is 0, then next game pops up
-                   // mq.incorrectAnswer();
-                    //time.cancel();
-                    counter = 20;
-                    finish();
-                }
+
 
             }
         };
