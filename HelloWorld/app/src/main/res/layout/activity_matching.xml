@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="kindling.com.helloworld.MatchingActivity">
+    tools:context="kindling.com.helloworld.MatchingActivity"
+    android:id="@+id/">
 
     <ImageView
         android:id="@+id/imageTopView"
@@ -72,6 +73,7 @@
         android:id="@+id/leftButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="5dp"
         android:layout_gravity="center"
         android:background="@null"
         android:layout_alignTop="@+id/rightButton"
@@ -82,9 +84,10 @@
 
     <ImageButton
         android:id="@+id/rightButton"
-        android:layout_width="50dp"
+        android:layout_width="56dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
         android:background="@null"
         android:layout_above="@+id/informationButton"
         android:layout_toRightOf="@+id/machingOwl"
@@ -98,7 +101,7 @@
         android:background="@null"
         android:layout_alignBottom="@+id/matching_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="11dp"
+        android:layout_marginBottom="13dp"
         android:scaleType="centerCrop"
         android:src="@drawable/information_btn" />
 
