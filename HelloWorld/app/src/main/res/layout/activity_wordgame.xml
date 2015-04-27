@@ -17,7 +17,7 @@
     />
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="60dp"
         android:src="@drawable/timer_bg"
         android:id="@+id/wordGame_timerBg"
@@ -138,7 +138,30 @@
         android:layout_marginTop = "9dp"
         android:layout_centerHorizontal = "true"
         />
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="25dp"
+        android:id="@+id/wordGame_time"
+        android:text="Timer"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/imageTopView_word"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="25dp"
+        android:id="@+id/wordGame_counter"
+        android:text="0:30"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_alignTop="@+id/wordGame_title"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight = "-7dp"/>
 
 
 
