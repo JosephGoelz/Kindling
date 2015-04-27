@@ -20,7 +20,7 @@ import model.kindling.Question;
 import model.kindling.MathQuestion;
 
 public class MathGameActivity extends ActionBarActivity {
-
+    Timer time;
     Button answer_one, answer_two, answer_three, answer_four;
     TextView question_text;
     int counter;
@@ -76,6 +76,9 @@ public class MathGameActivity extends ActionBarActivity {
                 else{
                     mq.incorrectAnswer();
                 }
+
+                //getIntent().setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                time.cancel();
                 finish();
                 startActivity(getIntent());
             }
@@ -90,6 +93,7 @@ public class MathGameActivity extends ActionBarActivity {
                 else{
                     mq.incorrectAnswer();
                 }
+                time.cancel();
                 finish();
                 startActivity(getIntent());
             }
@@ -104,6 +108,7 @@ public class MathGameActivity extends ActionBarActivity {
                 else{
                     mq.incorrectAnswer();
                 }
+                time.cancel();
                 finish();
                 startActivity(getIntent());
             }
@@ -118,6 +123,7 @@ public class MathGameActivity extends ActionBarActivity {
                 else{
                     mq.incorrectAnswer();
                 }
+                time.cancel();
                 finish();
                 startActivity(getIntent());
             }
@@ -127,7 +133,7 @@ public class MathGameActivity extends ActionBarActivity {
     }
     // when the game is started, call this function, then count starts
     public void timeCounter() {
-        Timer time = new Timer();
+        time = new Timer();
         TimerTask task = new TimerTask(){
             public void run() {
 
@@ -149,9 +155,10 @@ public class MathGameActivity extends ActionBarActivity {
                 counter--;
                 if(counter == 0) {
                     //when counter is 0, then next game pops up
-                    mq.incorrectAnswer();
+                   // mq.incorrectAnswer();
+                    //time.cancel();
+                    counter = 20;
                     finish();
-                    startActivity(getIntent());
                 }
 
             }
