@@ -1,6 +1,8 @@
 package kindling.com.helloworld;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -26,7 +29,7 @@ public class MathGameActivity extends ActionBarActivity {
     int counter;
     String string_Counter;
     TextView timerUpdate;
-
+    ImageView image;
     //here is where we create the question
     MathQuestion mq;
 
@@ -72,9 +75,11 @@ public class MathGameActivity extends ActionBarActivity {
                 //add functions here for the first button clicked.
                 if(mq.correctAnswerIndex == 0){
                     mq.correctAnswer();
+                    popUp(true);
                 }
                 else{
                     mq.incorrectAnswer();
+                    popUp(false);
                 }
 
                 //getIntent().setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -89,9 +94,11 @@ public class MathGameActivity extends ActionBarActivity {
                 //add functions here for the second button clicked.
                 if(mq.correctAnswerIndex == 1){
                     mq.correctAnswer();
+                    popUp(true);
                 }
                 else{
                     mq.incorrectAnswer();
+                    popUp(false);
                 }
                 time.cancel();
                 finish();
@@ -104,9 +111,11 @@ public class MathGameActivity extends ActionBarActivity {
                 //add functions here for the third button clicked.
                 if(mq.correctAnswerIndex == 2){
                     mq.correctAnswer();
+                    popUp(true);
                 }
                 else{
                     mq.incorrectAnswer();
+                    popUp(false);
                 }
                 time.cancel();
                 finish();
@@ -119,9 +128,11 @@ public class MathGameActivity extends ActionBarActivity {
                 //add functions here for the  button clicked.
                 if(mq.correctAnswerIndex == 3){
                     mq.correctAnswer();
+                    popUp(true);
                 }
                 else{
                     mq.incorrectAnswer();
+                    popUp(false);
                 }
                 time.cancel();
                 finish();
@@ -168,5 +179,29 @@ public class MathGameActivity extends ActionBarActivity {
         };
         time.schedule(task, 1000,1000);
     }
+    private void popUp(boolean increment) {
+
+        if(increment)
+        {
+            //increment
+            image = new ImageView(this);
+            image.setImageResource(R.drawable.increment_intelligence);
+
+        }else {
+            //decrement
+            image = new ImageView(this);
+            image.setImageResource(R.drawable.decrement_intelligence);
+        }
+
+        AlertDialog.Builder picturePopUp = new AlertDialog.Builder(this);
+        picturePopUp.setView(image);
+
+        AlertDialog helpDialog = picturePopUp.create();
+        helpDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        helpDialog.show();
+    }
+
+
+
 
 }
