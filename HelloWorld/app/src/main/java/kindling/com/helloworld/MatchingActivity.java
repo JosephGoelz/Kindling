@@ -33,6 +33,7 @@ public class MatchingActivity extends ActionBarActivity {
     Thread animation;
     ImageView image;
     private CardContainer cardContainer;
+    private int numSwipes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,9 @@ public class MatchingActivity extends ActionBarActivity {
         //Hiding grey title bar at the top of the screen.
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        ImageView noNewMatches = (ImageView) findViewById(R.id.no_new_matches);
+        noNewMatches.setVisibility(View.INVISIBLE);
 
         img = (ImageView) findViewById(R.id.leftButton);
 
@@ -158,6 +162,8 @@ public class MatchingActivity extends ActionBarActivity {
         ArrayList<Integer> resources = new ArrayList<>(Arrays.asList(R.drawable.ford_filer, R.drawable.mark_redekopp, R.drawable.aaron_cote, R.drawable.max_nikias, R.drawable.david_kempe));
 
         for (int i=0; i<5; i++) {
+            numSwipes = 0;
+
             CardModel cardModel = new CardModel(names.get(i), null, r.getDrawable(resources.get(i)));
             cardModel.setOnClickListener(new CardModel.OnClickListener() {
                 @Override
@@ -169,6 +175,7 @@ public class MatchingActivity extends ActionBarActivity {
                 @Override
                 public void onLike() {
                     System.out.println("I like the card");
+                    checkIfEmpty(numSwipes);
                 }
 
                 @Override
@@ -177,12 +184,33 @@ public class MatchingActivity extends ActionBarActivity {
                     System.out.println("I dislike the card");
                     popUp(false);
                     animation();
+                    checkIfEmpty(numSwipes);
                 }
             });
             adapter.add(cardModel);
         }
 
         cardContainer.setAdapter(adapter);
+    }
+
+    private void checkIfEmpty(int ns) {
+        numSwipes++;
+        if (numSwipes == 5) {
+            ImageView noNewMatches = (ImageView) findViewById(R.id.no_new_matches);
+            noNewMatches.setVisibility(View.VISIBLE);
+
+            ImageView infoButton = (ImageView) findViewById(R.id.informationButton);
+            infoButton.setVisibility(View.INVISIBLE);
+
+            ImageView rBtn = (ImageView) findViewById(R.id.rightButton);
+            rBtn.setVisibility(View.INVISIBLE);
+
+            ImageView lBtn = (ImageView) findViewById(R.id.leftButton);
+            lBtn.setVisibility(View.INVISIBLE);
+
+            ImageView matchBtn = (ImageView) findViewById(R.id.matching_button);
+            matchBtn.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void popUp(boolean information) {
