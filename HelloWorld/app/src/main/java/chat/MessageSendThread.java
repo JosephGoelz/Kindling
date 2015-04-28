@@ -11,25 +11,24 @@ import model.kindling.Application;
  */
 
 public class MessageSendThread extends Thread {
-    private PrintWriter pw;
     private String message;
     public MessageSendThread(String line) {
         // Intitialize the variables to use
         message = line;
+    }
+    public void run() {
+        PrintWriter pw = null;
         Socket s = Application.getChatSocket();
         try {
             pw = new PrintWriter(s.getOutputStream());
-            this.start();
+            pw.println(message);
+            pw.flush();
         } catch (IOException ioe) {
-            System.out.println("IOE in ChatClient constructor: " + ioe.getMessage());
+            System.out.println("IOE in MessageSendThread constructor: " + ioe.getMessage());
             // Close the PrintWriter
             if (pw != null) {
                 pw.close();
             }
         }
-    }
-    public void run() {
-        pw.println(message);
-        pw.flush();
     }
 }
