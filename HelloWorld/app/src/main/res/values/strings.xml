@@ -16,6 +16,7 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_signup">SignupActivity</string>
     <string name="title_activity_game">GameActivity</string>
+    <string name="chat_hint">Touch here to chat</string>
     <string name="username">Username</string>
     <string name="name">Name</string>
     <string name="location">Location</string>
@@ -29,5 +30,6 @@
     <string name="title_activity_mathgame">MathGameActivity</string>
     <string name="server_IP">198.199.92.13</string>
     <string name="auth_fail">Username or password was incorrect</string>
+    <string name="send_button">Send</string>
 
 </resources>

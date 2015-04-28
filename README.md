@@ -80,3 +80,19 @@ git add asdf.txt
 git commit
 git push
 ```
+
+###Implementation ReadMe Additional Notes:
+
+Users in the database are able to log in, using their correct passwords and usernames.
+When they log in, potential matches (candidates) are show up and are able to be approved/denied via a swipe right or left
+When a user clicks the logo at the top, the user is able to play the math mini game
+When a user clicks the correct response to the question, then his/her score will increment (score denotes intelligence)
+When a user clicks the incorrect response to the question, then his/her score will decrement
+When a user clicks the settings button at the top left, he/she should be able to change his/her preferred age range in addition to his/her preferred intelligence levels
+When the app is started, and a user presses the play without an account button, he/she is able to access the game
+
+Our chat's sending feature is a bit buggy at the moment, but we plan on modifying this for the demo. The code is present, though.
+In the back end, users' scores are updated while playing the game... but while users are playing the game, the popup displayed (signifying increment or decremnt of score) is not necessarily correct.
+
+
+When attempting to log in, please use the username "BMoney" with the password as "password"

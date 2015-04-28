@@ -1,32 +1,29 @@
 package database.tasks;
 
-import android.os.AsyncTask;
-import android.widget.Toast;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import java.util.ArrayList;
 import database.DatabaseRequest;
 import database.RequestType;
-import kindling.com.helloworld.LoginActivity;
-import kindling.com.helloworld.R;
-import model.kindling.Application;
 import model.kindling.User;
 
 /**
- * Created by tcai on 4/26/15.
+ * Created by winstojl on 4/26/15.
  */
-public class AuthTask implements Runnable {
-    private User sendU, finalUser = null;
 
-    public AuthTask(User sendU) {
+public class MatchTask implements Runnable {
+    private User sendU;
+    private ArrayList<User> candidateSet = null;
+
+    public MatchTask(User sendU) {
         this.sendU = sendU;
     }
 
-    public User getResult() {
-        return finalUser;
+    public ArrayList<User> getResult() {
+        return candidateSet;
     }
 
     @Override
@@ -40,7 +37,7 @@ public class AuthTask implements Runnable {
 
             // Send the user over
             oos = new ObjectOutputStream(s.getOutputStream());
-            DatabaseRequest request = new DatabaseRequest(sendU, RequestType.AUTHENTICATE_USER);
+            DatabaseRequest request = new DatabaseRequest(sendU, RequestType.GET_MATCHES);
             oos.writeObject(request);
             oos.flush();
 
@@ -51,7 +48,7 @@ public class AuthTask implements Runnable {
 
 
             if (req.getRequestType() == RequestType.VALID) {
-                finalUser = req.getUser();
+                candidateSet = req.getListUsers();
             }
         } catch (IOException ioe) {
             System.out.println("IOE: " + ioe.getMessage());

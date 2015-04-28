@@ -6,13 +6,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+
+import chat.ChatClientThread;
 
 
 public class MainMessagesActivity extends ActionBarActivity {
 
     ImageButton chattingButton1, chattingButton2, chattingButton3, chattingButton4;
     ImageButton chattingButton5, chattingButton6;
+    EditText chatEditText;
+    Button sendButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +37,8 @@ public class MainMessagesActivity extends ActionBarActivity {
         chattingButton4 = (ImageButton) findViewById(R.id.user_chatting_Icon4);
         chattingButton5 = (ImageButton) findViewById(R.id.user_chatting_Icon5);
         chattingButton6 = (ImageButton) findViewById(R.id.user_chatting_Icon6);
+        chatEditText = (EditText) findViewById(R.id.chat_edit_text);
+        sendButton = (Button) findViewById(R.id.send_button);
 
         //When each chattingButton is clicked
         chattingButton1.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +75,14 @@ public class MainMessagesActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 //add functions here when the fifth button clicked.
+            }
+        });
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Sends a message
+                new ChatClientThread();
             }
         });
     }
