@@ -32,6 +32,7 @@ public class MathGameActivity extends ActionBarActivity {
     ImageView image;
     //here is where we create the question
     MathQuestion mq;
+    AlertDialog helpDialog;
 
     public static final String question = "Question";
     public static final String answer1 = "Answer1";
@@ -45,7 +46,7 @@ public class MathGameActivity extends ActionBarActivity {
         mq = new MathQuestion();
         mq.populateAnswers();
         mq.generateQuestionText();
-        mq.setCorrectAnswer( mq.correctAnswer);
+        mq.setCorrectAnswer(mq.correctAnswer);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mathgame);
@@ -73,82 +74,91 @@ public class MathGameActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 //add functions here for the first button clicked.
-                if(mq.correctAnswerIndex == 0){
-                    mq.correctAnswer();
+                if (mq.correctAnswerIndex == 0) {
+                    System.out.println("NUM ONE SELECTED : TRUE");
                     popUp(true);
-                }
-                else{
-                    mq.incorrectAnswer();
+                    mq.correctAnswer();
+                } else {
+                    System.out.println("NUM ONE SELECTED : FALSE");
                     popUp(false);
+                    mq.incorrectAnswer();
                 }
 
                 //getIntent().setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 time.cancel();
-                finish();
-                startActivity(getIntent());
+                delayNextQuestion();
+                //finish();
+                //startActivity(getIntent());
             }
         });
         answer_two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //add functions here for the second button clicked.
-                if(mq.correctAnswerIndex == 1){
-                    mq.correctAnswer();
+                if (mq.correctAnswerIndex == 1) {
+                    System.out.println("NUM TWO SELECTED : TRUE");
                     popUp(true);
-                }
-                else{
-                    mq.incorrectAnswer();
+                    mq.correctAnswer();
+                } else {
+                    System.out.println("NUM TWO SELECTED : FALSE");
                     popUp(false);
+                    mq.incorrectAnswer();
                 }
                 time.cancel();
-                finish();
-                startActivity(getIntent());
+                delayNextQuestion();
+                //finish();
+                //startActivity(getIntent());
             }
         });
         answer_three.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //add functions here for the third button clicked.
-                if(mq.correctAnswerIndex == 2){
-                    mq.correctAnswer();
+                if (mq.correctAnswerIndex == 2) {
+                    System.out.println("NUM THREE SELECTED : TRUE");
                     popUp(true);
-                }
-                else{
-                    mq.incorrectAnswer();
+                    mq.correctAnswer();
+                } else {
+                    System.out.println("NUM THREE SELECTED : FALSE");
                     popUp(false);
+                    mq.incorrectAnswer();
                 }
                 time.cancel();
-                finish();
-                startActivity(getIntent());
+                delayNextQuestion();
+                //finish();
+                //startActivity(getIntent());
             }
         });
         answer_four.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //add functions here for the  button clicked.
-                if(mq.correctAnswerIndex == 3){
-                    mq.correctAnswer();
+                if (mq.correctAnswerIndex == 3) {
+                    System.out.println("NUM FOUR SELECTED : TRUE");
                     popUp(true);
-                }
-                else{
-                    mq.incorrectAnswer();
+                    mq.correctAnswer();
+                } else {
+                    System.out.println("NUM FOUR SELECTED : FALSE");
                     popUp(false);
+                    mq.incorrectAnswer();
                 }
                 time.cancel();
-                finish();
-                startActivity(getIntent());
+                delayNextQuestion();
+                //finish();
+                //startActivity(getIntent());
             }
         });
         timeCounter();
 
     }
+
     // when the game is started, call this function, then count starts
     public void timeCounter() {
         time = new Timer();
-        TimerTask task = new TimerTask(){
+        TimerTask task = new TimerTask() {
             public void run() {
                 counter--;
-                if(counter == 0) {
+                if (counter == 0) {
                     //when counter is 0, then next game pops up
                     // mq.incorrectAnswer();
                     //time.cancel();
@@ -160,14 +170,12 @@ public class MathGameActivity extends ActionBarActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(counter < 10)
-                        {
-                            System.out.println("check 1 : " + counter);
-                            timerUpdate.setText("0:0"+string_Counter);
-                        }
-                        else {
-                            System.out.println("check 2 : " + counter);
-                            timerUpdate.setText("0:"+string_Counter);
+                        if (counter < 10) {
+                            //System.out.println("check 1 : " + counter);
+                            timerUpdate.setText("0:0" + string_Counter);
+                        } else {
+                            //System.out.println("check 2 : " + counter);
+                            timerUpdate.setText("0:" + string_Counter);
                         }
 
 
@@ -177,17 +185,17 @@ public class MathGameActivity extends ActionBarActivity {
 
             }
         };
-        time.schedule(task, 1000,1000);
+        time.schedule(task, 1000, 1000);
     }
+
     private void popUp(boolean increment) {
 
-        if(increment)
-        {
+        if (increment) {
             //increment
             image = new ImageView(this);
             image.setImageResource(R.drawable.increment_intelligence);
 
-        }else {
+        } else {
             //decrement
             image = new ImageView(this);
             image.setImageResource(R.drawable.decrement_intelligence);
@@ -196,12 +204,27 @@ public class MathGameActivity extends ActionBarActivity {
         AlertDialog.Builder picturePopUp = new AlertDialog.Builder(this);
         picturePopUp.setView(image);
 
-        AlertDialog helpDialog = picturePopUp.create();
+        helpDialog = picturePopUp.create();
         helpDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         helpDialog.show();
+
     }
 
+    public void delayNextQuestion() {
+        Thread th = new Thread() {
+            public void run() {
+                try {
+                    sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                helpDialog.dismiss();
+                finish();
+                startActivity(getIntent());
+            }
 
 
-
+        };
+        th.start();
+    }
 }

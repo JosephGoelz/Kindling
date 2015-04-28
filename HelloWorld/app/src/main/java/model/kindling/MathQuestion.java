@@ -30,7 +30,9 @@ public class MathQuestion extends Question {
     @Override
     public void setCorrectAnswer(String correctAnswer) {
         Random randy = new Random();
+
         int index = randy.nextInt(4);
+        correctAnswerIndex = index;
         if(index == 0){
             aAnswer = correctAnswer;
         }
