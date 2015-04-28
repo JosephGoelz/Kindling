@@ -9,8 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import java.util.Vector;
 
 import chat.MessageSendThread;
+import model.kindling.Application;
 
 
 public class MainMessagesActivity extends ActionBarActivity {
@@ -31,59 +35,18 @@ public class MainMessagesActivity extends ActionBarActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        chattingButton1 = (ImageButton) findViewById(R.id.user_chatting_Icon1);
-        chattingButton2 = (ImageButton) findViewById(R.id.user_chatting_Icon2);
-        chattingButton3 = (ImageButton) findViewById(R.id.user_chatting_Icon3);
-        chattingButton4 = (ImageButton) findViewById(R.id.user_chatting_Icon4);
-        chattingButton5 = (ImageButton) findViewById(R.id.user_chatting_Icon5);
-        chattingButton6 = (ImageButton) findViewById(R.id.user_chatting_Icon6);
+        // Get the text edittor and the send button for chat
         chatEditText = (EditText) findViewById(R.id.chat_edit_text);
         sendButton = (Button) findViewById(R.id.send_button);
 
-        //When each chattingButton is clicked
-        chattingButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //add functions here when the first button clicked.
-            }
-        });
-        chattingButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //add functions here when the second button clicked.
-            }
-        });
-        chattingButton3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //add functions here when the third button clicked.
-            }
-        });
-        chattingButton4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //add functions here when the forth button clicked.
-            }
-        });
-        chattingButton5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //add functions here when the fifth button clicked.
-            }
-        });
-        chattingButton6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //add functions here when the fifth button clicked.
-            }
-        });
-
+        // Send button should send out a message and clear the edit text
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Sends a message
-                // TODO actually get message
-                new MessageSendThread("poop");
+                new MessageSendThread(chatEditText.getText().toString()).start();
+                // Clears the chatbox for the next message
+                chatEditText.getText().clear();
             }
         });
     }
