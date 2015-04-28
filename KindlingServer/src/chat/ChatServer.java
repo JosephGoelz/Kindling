@@ -48,7 +48,7 @@ public class ChatServer {
 				thread.start();
 			}
 		} catch (IOException ioe) {
-			System.out.println("IO Exception with DBServer");
+			System.out.println("IO Exception with ChatServer");
 			System.out.println(ioe.getMessage());
 		}
 	}
@@ -57,11 +57,9 @@ public class ChatServer {
 	public void removeChatThread(ChatThread ct) {
 		chats.remove(ct);
 	}
-	public void sendMessageToClients(ChatThread sending, String str) {
+	public void sendMessageToClients(String sending, String str) {
 		for (ChatThread ct : chats) {
-			if (!sending.equals(ct)) {
-				ct.sendLine(sending.getUsername() + ": " + str);
-			}
+			ct.sendLine(sending + ": " + str);
 		}
 	}
 	

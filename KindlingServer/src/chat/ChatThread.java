@@ -50,7 +50,7 @@ public class ChatThread extends Thread {
 				// If we disconnect unexpectedly, don't send the line
 				if(line == null) throw new IOException("Null line");
 				
-				server.sendMessageToClients(this,line);
+				server.sendMessageToClients(this.getUsername(),line);
 			}
 		}
 		
