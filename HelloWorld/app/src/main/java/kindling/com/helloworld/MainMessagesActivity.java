@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import chat.ChatClientThread;
+import chat.MessageSendThread;
 
 
 public class MainMessagesActivity extends ActionBarActivity {
@@ -82,7 +82,8 @@ public class MainMessagesActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 //Sends a message
-                new ChatClientThread();
+                // TODO actually get message
+                new MessageSendThread("poop");
             }
         });
     }
