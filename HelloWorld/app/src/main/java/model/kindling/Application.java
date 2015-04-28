@@ -3,6 +3,8 @@ package model.kindling;
 import java.io.IOException;
 import java.net.Socket;
 
+import chat.MessageSendThread;
+
 /**
  * Created by Jay on 4/21/2015.
  */
@@ -17,7 +19,15 @@ public class Application {
         _User = user;
         loggedIn = true;
         // TODO: Get the chat server working. Connection should be ok
-        // openChatSocket();
+        openChatSocket();
+        // Send in our username
+        Thread sendName = new MessageSendThread(_User.getUserName());
+        sendName.start();
+        try {
+            sendName.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void logOut(){
@@ -55,5 +65,10 @@ public class Application {
             }
         };
         t.start();
+        try {
+            t.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
