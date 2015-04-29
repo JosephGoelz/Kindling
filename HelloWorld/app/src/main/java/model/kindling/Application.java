@@ -2,7 +2,7 @@ package model.kindling;
 
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Vector;
+import java.util.ArrayList;
 
 import chat.ChatReceiverThread;
 import chat.MessageSendThread;
@@ -14,7 +14,7 @@ public class Application {
     private static User _User;
     private static boolean loggedIn = false;
     private static Socket chatSocket;
-    private static Vector<String> chatVector = new Vector<>();
+    private static ArrayList<String> chatList = new ArrayList<>();
 
     public static void initApplication(User user) {
         //when we log in we give the application our user
@@ -48,7 +48,7 @@ public class Application {
         return chatSocket;
     }
 
-    public static Vector<String> getChatVector() { return chatVector; }
+    public static ArrayList<String> getChatList() { return chatList; }
 
     public static void openChatSocket() {
         Thread t = new Thread() {

@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
-import java.util.Vector;
+import java.util.ArrayList;
 
 import model.kindling.Application;
 
@@ -14,7 +14,7 @@ import model.kindling.Application;
 public class ChatReceiverThread extends Thread {
     public void run() {
         BufferedReader br = null;
-        Vector<String> store = Application.getChatVector();
+        ArrayList<String> store = Application.getChatList();
         try {
             Socket s = Application.getChatSocket();
             br = new BufferedReader(new InputStreamReader(s.getInputStream()));
