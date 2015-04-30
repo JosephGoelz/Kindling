@@ -34,7 +34,6 @@ public class MathGameActivity extends ActionBarActivity {
     //here is where we create the question
     MathQuestion mq;
     AlertDialog helpDialog;
-    MediaPlayer mp;
 
 
     public static final String question = "Question";
@@ -196,8 +195,6 @@ public class MathGameActivity extends ActionBarActivity {
 
         if (increment) {
             //increment
-            mp = MediaPlayer.create(getApplicationContext(), R.raw.explode);
-            mp.start();
             image = new ImageView(this);
             image.setImageResource(R.drawable.increment_intelligence);
 
