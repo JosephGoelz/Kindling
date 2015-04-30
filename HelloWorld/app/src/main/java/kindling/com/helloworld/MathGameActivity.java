@@ -21,6 +21,7 @@ import java.util.Timer;
 import model.kindling.Application;
 import model.kindling.Question;
 import model.kindling.MathQuestion;
+import android.media.MediaPlayer;
 
 public class MathGameActivity extends ActionBarActivity {
     Timer time;
@@ -33,6 +34,8 @@ public class MathGameActivity extends ActionBarActivity {
     //here is where we create the question
     MathQuestion mq;
     AlertDialog helpDialog;
+    MediaPlayer mp;
+
 
     public static final String question = "Question";
     public static final String answer1 = "Answer1";
@@ -51,6 +54,7 @@ public class MathGameActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mathgame);
         setTitle("Math Game");
+        //sound
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -192,6 +196,8 @@ public class MathGameActivity extends ActionBarActivity {
 
         if (increment) {
             //increment
+            mp = MediaPlayer.create(getApplicationContext(), R.raw.explode);
+            mp.start();
             image = new ImageView(this);
             image.setImageResource(R.drawable.increment_intelligence);
 

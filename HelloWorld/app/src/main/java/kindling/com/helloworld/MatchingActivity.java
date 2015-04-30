@@ -2,6 +2,7 @@ package kindling.com.helloworld;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.media.MediaPlayer;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class MatchingActivity extends ActionBarActivity {
     ImageView image;
     private CardContainer cardContainer;
     private int numSwipes;
+    MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -218,6 +220,8 @@ public class MatchingActivity extends ActionBarActivity {
             if(!information)
             {
                 //matching animation pops up
+                mp = MediaPlayer.create(getApplicationContext(), R.raw.match_sound);
+                mp.start();
                 image = new ImageView(this);
                 image.setImageResource(R.drawable.its_a_match);
 
