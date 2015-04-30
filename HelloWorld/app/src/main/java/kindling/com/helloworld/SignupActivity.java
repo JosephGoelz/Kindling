@@ -2,16 +2,15 @@ package kindling.com.helloworld;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import database.tasks.AuthTask;
 import database.tasks.SignUpTask;
 import helper.StringFunctions;
 import model.kindling.Application;
@@ -51,21 +50,21 @@ public class SignupActivity extends ActionBarActivity {
         TextView txtInterestedIn = (TextView) findViewById(R.id.interested_in_text_view);
         TextView txtSex = (TextView) findViewById(R.id.gender_text_view);
 
-        EditText txtUsername = (EditText) findViewById(R.id.username_edit_text);
-        EditText txtPassword = (EditText) findViewById(R.id.password_edit_text);
-        EditText txtName = (EditText) findViewById(R.id.name_edit_text);
-        EditText txtLocation = (EditText) findViewById(R.id.location_edit_text);
-        EditText txtAge = (EditText) findViewById(R.id.age_edit_text);
+        usernameEditText = (EditText) findViewById(R.id.username_edit_text);
+        passwordEditText = (EditText) findViewById(R.id.password_edit_text);
+        nameEditText = (EditText) findViewById(R.id.name_edit_text);
+        locationEditText = (EditText) findViewById(R.id.location_edit_text);
+        ageEditText = (EditText) findViewById(R.id.age_edit_text);
 
         //Loading Font Face
         Typeface tf = Typeface.createFromAsset(getAssets(),fontPath);
 
         //Applying font
-        txtUsername.setTypeface(tf);
-        txtPassword.setTypeface(tf);
-        txtName.setTypeface(tf);
-        txtLocation.setTypeface(tf);
-        txtAge.setTypeface(tf);
+        usernameEditText.setTypeface(tf);
+        passwordEditText.setTypeface(tf);
+        nameEditText.setTypeface(tf);
+        locationEditText.setTypeface(tf);
+        ageEditText.setTypeface(tf);
 
         txtInterestedIn.setTypeface(tf);
         txtSex.setTypeface(tf);
@@ -76,62 +75,56 @@ public class SignupActivity extends ActionBarActivity {
         male = false;
         female = false;
 
-        usernameEditText = (EditText) findViewById(R.id.username_edit_text);
-        passwordEditText = (EditText) findViewById(R.id.password_edit_text);
-        nameEditText = (EditText) findViewById(R.id.name_edit_text);
-        locationEditText = (EditText) findViewById(R.id.location_edit_text);
-        ageEditText = (EditText) findViewById(R.id.age_edit_text);
-
+        // Set up listener for signup button
         kindleButton = (ImageButton) findViewById(R.id.actualSignupButton);
         kindleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (invalidInput()) {
                     Toast.makeText(getApplicationContext(), R.string.invalid_input, Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                else {
-                    Integer gender = 0; // 0 = male, 1 = female
-                    if (female) gender = 1;
+                Integer gender = 0; // 0 = male, 1 = female
+                if (female) gender = 1;
 
-                    Integer genderPreference = 0; // 0 = into males, 1 = into females, 2 = into both
-                    if (intoWomenSelected) genderPreference = 1;
-                    if (intoMaleSelected && genderPreference == 1) genderPreference = 2;
+                Integer genderPreference = 0; // 0 = into males, 1 = into females, 2 = into both
+                if (intoWomenSelected) genderPreference = 1;
+                if (intoMaleSelected && genderPreference == 1) genderPreference = 2;
 
+                // Makes the new user
+                User newUser = new User(usernameEditText.getText().toString());
 
-                    // Makes the new user
-                    User newUser = new User(usernameEditText.getText().toString());
+                newUser.setName(nameEditText.getText().toString());
+                newUser.setAge(Integer.parseInt(ageEditText.getText().toString()));
+                newUser.setSex(gender);
+                newUser.setSexualOrientation(genderPreference);
+                newUser.setPassword(passwordEditText.getText().toString());
+                newUser.setAgeRange(new Range(18,59));
+                newUser.setIntelRange(new Range(1, 100));
 
-                    newUser.setName(nameEditText.getText().toString());
-                    newUser.setAge(Integer.parseInt(ageEditText.getText().toString()));
-                    newUser.setSex(gender);
-                    newUser.setSexualOrientation(genderPreference);
-                    newUser.setPassword(passwordEditText.getText().toString());
-                    newUser.setAgeRange(new Range(18,59));
-                    newUser.setIntelRange(new Range(1,100));
-
-                    // Check to make sure this is okay to create
-                    // Send user
-                    SignUpTask sut = new SignUpTask(newUser);
-                    Thread t = new Thread(sut);
-                    t.start();
-                    try {
-                        t.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    boolean okay = sut.getResult();
-
-                    if(!okay) {
-                        Toast.makeText(getApplicationContext(),
-                                R.string.sign_up_fail, Toast.LENGTH_LONG).show();
-                        return;
-                    }
-
-                    Application.initApplication(newUser);
-
-                    Intent intent = new Intent(v.getContext(), MatchingActivity.class);
-                    startActivity(intent);
+                // Check to make sure this is okay to create
+                SignUpTask sut = new SignUpTask(newUser);
+                Thread t = new Thread(sut);
+                t.start();
+                try {
+                    t.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
+                boolean okay = sut.getResult();
+
+                if(!okay) {
+                    Toast.makeText(getApplicationContext(),
+                            R.string.sign_up_fail, Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                // Initialize the application with a new user
+                Application.initApplication(newUser);
+
+                // Switch to MatchingActivity
+                Intent intent = new Intent(v.getContext(), MatchingActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -247,7 +240,6 @@ public class SignupActivity extends ActionBarActivity {
         }
 
         Integer age = Integer.parseInt(ageEditText.getText().toString());
-        if (age < 18) return true;
-        return false;
+        return age < 18;
     }
 }

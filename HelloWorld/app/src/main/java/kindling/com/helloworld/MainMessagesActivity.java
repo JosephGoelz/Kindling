@@ -1,16 +1,14 @@
 package kindling.com.helloworld;
 
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import chat.MessageSendThread;
 import model.kindling.Application;
@@ -18,8 +16,6 @@ import model.kindling.Application;
 
 public class MainMessagesActivity extends ActionBarActivity {
 
-    ImageButton chattingButton1, chattingButton2, chattingButton3, chattingButton4;
-    ImageButton chattingButton5, chattingButton6;
     EditText chatEditText;
     Button sendButton;
     Thread chatUpdate;
