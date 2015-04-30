@@ -1,5 +1,6 @@
 package kindling.com.helloworld;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -20,6 +21,7 @@ public class MainMessagesActivity extends ActionBarActivity {
     Button sendButton;
     Thread chatUpdate;
     TextView [] chatTextArray = new TextView[6];
+    TextView chat_1, chat_2, chat_3, chat_4, chat_5, chat_6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,27 @@ public class MainMessagesActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main_messages);
         setTitle("Messages");
 
+
+        String fontPath = "fonts/Souses.otf";
+
+        chat_1 = (TextView) findViewById(R.id.chat_text1);
+        chat_2 = (TextView) findViewById(R.id.chat_text2);
+        chat_3 = (TextView) findViewById(R.id.chat_text3);
+        chat_4 = (TextView) findViewById(R.id.chat_text4);
+        chat_5 = (TextView) findViewById(R.id.chat_text5);
+        chat_6 = (TextView) findViewById(R.id.chat_text6);
+
+        //Loading Font Face
+
+        Typeface tf = Typeface.createFromAsset(getAssets(),fontPath);
+
+
+        chat_1.setTypeface(tf);
+        chat_2.setTypeface(tf);
+        chat_3.setTypeface(tf);
+        chat_4.setTypeface(tf);
+        chat_5.setTypeface(tf);
+        chat_6.setTypeface(tf);
 
         //Hiding grey title bar at the top of the screen.
         ActionBar actionBar = getSupportActionBar();
