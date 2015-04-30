@@ -60,7 +60,7 @@ public class MainMessagesActivity extends ActionBarActivity {
                 String chatContent = chatEditText.getText().toString();
                 //Sends a message
                 new MessageSendThread(chatContent).start();
-                Application.getChatList().add(chatContent);
+                Application.getChatList().add(Application.getUser().getUserName() + ": " + chatContent);
                 // Clears the chatbox for the next message
                 chatEditText.getText().clear();
                 //update chat
