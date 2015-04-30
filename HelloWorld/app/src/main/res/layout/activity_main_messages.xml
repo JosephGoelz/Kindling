@@ -134,7 +134,7 @@
         android:id="@+id/chat_text1"
         android:layout_alignTop="@+id/user_chatting_Icon1"
         android:layout_centerHorizontal="true"
-        android:textSize="30dp"/>
+        android:textSize="20dp"/>
     <TextView
         android:layout_width="290dp"
         android:layout_height="60dp"
@@ -142,7 +142,7 @@
         android:layout_alignTop="@+id/user_chatting_Icon2"
         android:layout_alignLeft="@+id/chat_text1"
         android:layout_alignStart="@+id/chat_text1"
-        android:textSize="30dp"/>
+        android:textSize="20dp"/>
     <TextView
         android:layout_width="290dp"
         android:layout_height="60dp"
@@ -153,7 +153,7 @@
         android:layout_alignBottom="@+id/user_chatting_Icon3"
         android:layout_alignLeft="@+id/chat_text2"
         android:layout_alignStart="@+id/chat_text2"
-        android:textSize="30dp"/>
+        android:textSize="20dp"/>
     <TextView
         android:layout_width="290dp"
         android:layout_height="60dp"
@@ -161,7 +161,7 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/user_chatting_Icon4"
         android:layout_toEndOf="@+id/user_chatting_Icon4"
-        android:textSize="30dp"/>
+        android:textSize="20dp"/>
     <TextView
         android:layout_width="290dp"
         android:layout_height="60dp"
@@ -169,14 +169,14 @@
         android:layout_alignTop="@+id/user_chatting_Icon5"
         android:layout_toRightOf="@+id/user_chatting_Icon5"
         android:layout_toEndOf="@+id/user_chatting_Icon5"
-        android:textSize="30dp"/>
+        android:textSize="20dp"/>
     <TextView
         android:layout_width="290dp"
         android:layout_height="60dp"
         android:id="@+id/chat_text6"
         android:layout_alignLeft="@+id/chat_text5"
         android:layout_alignStart="@+id/chat_text5"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:layout_alignTop="@+id/user_chatting_Icon6" />
 
 
