@@ -11,8 +11,11 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.TextView;
 
+import database.tasks.AuthTask;
+import database.tasks.SignUpTask;
 import helper.StringFunctions;
 import model.kindling.Application;
+import model.kindling.Range;
 import model.kindling.User;
 
 public class SignupActivity extends ActionBarActivity {
@@ -94,14 +97,35 @@ public class SignupActivity extends ActionBarActivity {
                     if (intoWomenSelected) genderPreference = 1;
                     if (intoMaleSelected && genderPreference == 1) genderPreference = 2;
 
-                    User newUser = new User();
+
+                    // Makes the new user
+                    User newUser = new User(usernameEditText.getText().toString());
 
                     newUser.setName(nameEditText.getText().toString());
                     newUser.setAge(Integer.parseInt(ageEditText.getText().toString()));
-                    newUser.setUserName(usernameEditText.getText().toString());
                     newUser.setSex(gender);
                     newUser.setSexualOrientation(genderPreference);
                     newUser.setPassword(passwordEditText.getText().toString());
+                    newUser.setAgeRange(new Range(18,59));
+                    newUser.setIntelRange(new Range(1,100));
+
+                    // Check to make sure this is okay to create
+                    // Send user
+                    SignUpTask sut = new SignUpTask(newUser);
+                    Thread t = new Thread(sut);
+                    t.start();
+                    try {
+                        t.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    boolean okay = sut.getResult();
+
+                    if(!okay) {
+                        Toast.makeText(getApplicationContext(),
+                                R.string.sign_up_fail, Toast.LENGTH_LONG).show();
+                        return;
+                    }
 
                     Application.initApplication(newUser);
 

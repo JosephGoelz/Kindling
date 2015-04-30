@@ -10,17 +10,18 @@ import database.RequestType;
 import model.kindling.User;
 
 /**
- * Created by tcai on 4/26/15.
+ * Created by tcai on 4/28/15.
  */
-public class AuthTask implements Runnable {
-    private User sendU, finalUser = null;
+public class SignUpTask implements Runnable {
+    private User sendU;
+    private boolean success = true;
 
-    public AuthTask(User sendU) {
+    public SignUpTask(User sendU) {
         this.sendU = sendU;
     }
 
-    public User getResult() {
-        return finalUser;
+    public boolean getResult() {
+        return success;
     }
 
     @Override
@@ -34,7 +35,7 @@ public class AuthTask implements Runnable {
 
             // Send the user over
             oos = new ObjectOutputStream(s.getOutputStream());
-            DatabaseRequest request = new DatabaseRequest(sendU, RequestType.AUTHENTICATE_USER);
+            DatabaseRequest request = new DatabaseRequest(sendU, RequestType.SIGN_IN);
             oos.writeObject(request);
             oos.flush();
 
@@ -43,9 +44,11 @@ public class AuthTask implements Runnable {
             DatabaseRequest req = (DatabaseRequest) ois.readObject();
             if (req == null) throw new IOException("Null returned");
 
-
             if (req.getRequestType() == RequestType.VALID) {
-                finalUser = req.getUser();
+                success = true;
+            }
+            else if (req.getRequestType() == RequestType.INVALID) {
+                success = false;
             }
         } catch (IOException ioe) {
             System.out.println("IOE: " + ioe.getMessage());
