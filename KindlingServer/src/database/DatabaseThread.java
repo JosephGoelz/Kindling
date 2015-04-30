@@ -3,10 +3,12 @@ package database;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.Authenticator.RequestorType;
 import java.net.Socket;
 
 import model.kindling.User;
 import database.sqlcommands.AuthenticateUser;
+import database.sqlcommands.SignIn;
 
 public class DatabaseThread extends Thread {
 	private Socket s;
@@ -57,8 +59,16 @@ public class DatabaseThread extends Thread {
 					else
 						sendObject(new DatabaseRequest(null,RequestType.INVALID));
 				}
+				else if (rt == RequestType.SIGN_IN) {
+					SignIn sn = new SignIn();
+					boolean success = sn.enrollUser(user);
+					if(success)
+						sendObject(new DatabaseRequest(null, RequestType.VALID));
+					else
+						sendObject(new DatabaseRequest(null, RequestType.INVALID));
+				}
 				else {
-					sendObject("Line received: " + request.getUser().getUserName());
+					sendObject(new DatabaseRequest(null,RequestType.INVALID));
 				}
 			}
 		}

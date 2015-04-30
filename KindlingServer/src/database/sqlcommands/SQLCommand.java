@@ -37,6 +37,24 @@ public abstract class SQLCommand {
 		}
 	}
 	
+	protected void runUpdate(String update) {
+		try {
+			Class.forName(DRIVER);
+			Connection conn = DriverManager.getConnection(DB_ADDRESS + DB_NAME, DB_USER, DB_PW);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(update);
+			
+			stmt.close();
+			conn.close();
+		}
+		catch (ClassNotFoundException cnfe) {
+			System.out.println("CNFE: " + cnfe.getMessage());
+		}
+		catch (SQLException sqle) {
+			System.out.println("SQLE: " + sqle.getMessage());
+		}
+	}
+	
 	protected abstract void filterRS(ResultSet rs);
 	
 	public static User getUser(ResultSet rs) {
