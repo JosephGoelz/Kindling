@@ -49,6 +49,7 @@ public class MainMessagesActivity extends ActionBarActivity {
         chatTextArray[1] = (TextView) findViewById(R.id.chat_text5);
         chatTextArray[0] = (TextView) findViewById(R.id.chat_text6);
 
+        updateChat();
         // Send button should send out a message and clear the edit text
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,11 +59,12 @@ public class MainMessagesActivity extends ActionBarActivity {
                 // Clears the chatbox for the next message
                 chatEditText.getText().clear();
                 //update chat
-                updateChat();
+                //updateChat();
                 //System.out.println(Application.getChatList().get(Application.getChatList().size()-1));
 
             }
         });
+
     }
 
 
@@ -90,33 +92,33 @@ public class MainMessagesActivity extends ActionBarActivity {
     public void updateChat() {
         chatUpdate = new Thread() {
             public void run() {
-                try {
-                    Thread.sleep(100);
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            //update chat here!
-                            int count = 0;
-                            while(count != 6) {
-                                try {
-                                    chatTextArray[count].setText(Application.getChatList().get(Application.getChatList().size()-(count+1)));
-                                    System.out.println(count);
-                                    count++;
-                                } catch(ArrayIndexOutOfBoundsException e) {
-                                    break;
+                while (true) {
+                    try {
+                        Thread.sleep(100);
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                //update chat here!
+                                int count = 0;
+                                while (count != 6) {
+                                    try {
+                                        chatTextArray[count].setText(Application.getChatList().get(Application.getChatList().size() - (count + 1)));
+                                        count++;
+                                    } catch (ArrayIndexOutOfBoundsException e) {
+                                        break;
+                                    }
                                 }
+                                //chatText6.setText(Application.getChatList().get(0));
+                                //System.out.println(Application.getChatList().get(Application.getChatList().size()-1));
                             }
-                            //chatText6.setText(Application.getChatList().get(0));
-                            //System.out.println(Application.getChatList().get(Application.getChatList().size()-1));
-                        }
-                    });
+                        });
 
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+
                 }
-
-
             }
-
 
         };
         chatUpdate.start();
