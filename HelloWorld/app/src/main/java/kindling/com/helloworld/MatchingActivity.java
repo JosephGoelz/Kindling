@@ -184,8 +184,10 @@ public class MatchingActivity extends ActionBarActivity {
                 public void onDislike() {
                     // for some reason this is what's called when you swipe right...
                     System.out.println("I dislike the card");
-                    popUp(false);
-                    animation();
+                    if(numSwipes >= 3) {
+                        popUp(false);
+                        animation();
+                    }
                     checkIfEmpty(numSwipes);
                 }
             });
