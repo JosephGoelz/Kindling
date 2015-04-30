@@ -57,9 +57,11 @@ public class ChatServer {
 	public void removeChatThread(ChatThread ct) {
 		chats.remove(ct);
 	}
-	public void sendMessageToClients(String sending, String str) {
+	public void sendMessageToClients(ChatThread sending, String str) {
 		for (ChatThread ct : chats) {
-			ct.sendLine(sending + ": " + str);
+			if(!ct.equals(sending)) {
+				ct.sendLine(sending.getUsername() + ": " + str);
+			}
 		}
 	}
 	
