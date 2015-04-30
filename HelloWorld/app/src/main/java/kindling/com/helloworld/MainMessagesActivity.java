@@ -73,8 +73,10 @@ public class MainMessagesActivity extends ActionBarActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String chatContent = chatEditText.getText().toString();
                 //Sends a message
-                new MessageSendThread(chatEditText.getText().toString()).start();
+                new MessageSendThread(chatContent).start();
+                Application.getChatList().add(chatContent);
                 // Clears the chatbox for the next message
                 chatEditText.getText().clear();
                 //update chat
