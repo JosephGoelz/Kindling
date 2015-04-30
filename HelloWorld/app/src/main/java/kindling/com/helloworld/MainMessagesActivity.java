@@ -29,44 +29,28 @@ public class MainMessagesActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main_messages);
         setTitle("Messages");
 
-
-        String fontPath = "fonts/Souses.otf";
-
-        chat_1 = (TextView) findViewById(R.id.chat_text1);
-        chat_2 = (TextView) findViewById(R.id.chat_text2);
-        chat_3 = (TextView) findViewById(R.id.chat_text3);
-        chat_4 = (TextView) findViewById(R.id.chat_text4);
-        chat_5 = (TextView) findViewById(R.id.chat_text5);
-        chat_6 = (TextView) findViewById(R.id.chat_text6);
-
-        //Loading Font Face
-
-        Typeface tf = Typeface.createFromAsset(getAssets(),fontPath);
-
-
-        chat_1.setTypeface(tf);
-        chat_2.setTypeface(tf);
-        chat_3.setTypeface(tf);
-        chat_4.setTypeface(tf);
-        chat_5.setTypeface(tf);
-        chat_6.setTypeface(tf);
-
         //Hiding grey title bar at the top of the screen.
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        Application.getChatList();
         // Get the text edittor and the send button for chat
         chatEditText = (EditText) findViewById(R.id.chat_edit_text);
         sendButton = (Button) findViewById(R.id.send_button);
-        //text update in gui
 
+        // Text updating in GUI
         chatTextArray[5] = (TextView) findViewById(R.id.chat_text1);
         chatTextArray[4] = (TextView) findViewById(R.id.chat_text2);
         chatTextArray[3] = (TextView) findViewById(R.id.chat_text3);
         chatTextArray[2] = (TextView) findViewById(R.id.chat_text4);
         chatTextArray[1] = (TextView) findViewById(R.id.chat_text5);
         chatTextArray[0] = (TextView) findViewById(R.id.chat_text6);
+
+        //Loading Font Face
+        String fontPath = "fonts/Souses.otf";
+        Typeface tf = Typeface.createFromAsset(getAssets(),fontPath);
+        for(int i = 0; i < 6; i++) {
+            chatTextArray[i].setTypeface(tf);
+        }
 
         updateChat();
         // Send button should send out a message and clear the edit text
