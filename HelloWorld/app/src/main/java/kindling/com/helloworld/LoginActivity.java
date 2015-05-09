@@ -61,26 +61,26 @@ public class LoginActivity extends ActionBarActivity {
                 User sendU = new User(usernameEditText.getText().toString());
                 sendU.setPassword(passwordEditText.getText().toString());
 
-                // Send user
-                AuthTask at = new AuthTask(sendU);
-                Thread t = new Thread(at);
-                t.start();
-                try {
-                    t.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                User returned = at.getResult();
-
-                // If failed, show toast and leave
-                if (returned == null) {
-                    Toast.makeText(getApplicationContext(),
-                            R.string.auth_fail, Toast.LENGTH_LONG).show();
-                    return;
-                }
+//                // Send user
+//                AuthTask at = new AuthTask(sendU);
+//                Thread t = new Thread(at);
+//                t.start();
+//                try {
+//                    t.join();
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                User returned = at.getResult();
+//
+//                // If failed, show toast and leave
+//                if (returned == null) {
+//                    Toast.makeText(getApplicationContext(),
+//                            R.string.auth_fail, Toast.LENGTH_LONG).show();
+//                    return;
+//                }
 
                 // initialize application with a user
-                Application.initApplication(returned);
+                Application.initApplication(sendU);
 
                 Intent intent = new Intent(v.getContext(), MatchingActivity.class);
                 startActivity(intent);
